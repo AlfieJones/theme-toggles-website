@@ -12,10 +12,10 @@ module.exports = {
           sans: ["Inter", ...defaultTheme.fontFamily.sans],
         },
       },
-      screens: {
-        xs: "500px",
-        ...defaultTheme.screens,
-      },
+    },
+    screens: {
+      xs: "500px",
+      ...defaultTheme.screens,
     },
     colors: {
       ...colors,
