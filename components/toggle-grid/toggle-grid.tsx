@@ -6,7 +6,7 @@ const toggles = [
     name: "Inner Moon",
     description: "Inspired by Google fonts toggle",
     href: "/",
-    classes: "bg-[#297aa3]",
+    classes: "bg-[#318bb8]",
   },
   {
     name: "Inner Moon 2",
