@@ -115,7 +115,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                     static
                     className="absolute inset-x-0 top-0 p-2 transition origin-top-right transform xs:hidden"
                   >
-                    <div className="overflow-hidden rounded-lg shadow-md dark:bg-dark-800 ring-1 ring-black ring-opacity-5">
+                    <div className="overflow-hidden bg-white rounded-lg shadow-md dark:bg-dark-800 ring-1 ring-black ring-opacity-5">
                       <div className="flex items-center justify-between px-5 pt-4">
                         <a
                           href="https://github.com/alfiejones/theme-toggles"
