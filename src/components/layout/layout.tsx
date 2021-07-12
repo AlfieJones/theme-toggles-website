@@ -1,11 +1,10 @@
 import React, { FC, Fragment } from "react"
 import Link from "next/link"
-import Script from "next/script"
 import clsx from "clsx"
 import { Popover, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 import { LayoutProps } from "./layout.props"
-import { useRouter } from "next/dist/client/router"
+import { useRouter } from "next/router"
 import useTheme from "next-theme"
 
 const navigation = [
@@ -22,7 +21,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
       <div className="relative min-h-screen overflow-hidden dark:bg-dark-900">
         <div className="relative pt-6 pb-16 xs:pb-24">
           <Popover>
-            {({ open }) => (
+            {({ open }: { open: boolean }) => (
               <>
                 <div className="px-6 mx-auto max-w-7xl">
                   <nav
@@ -166,7 +165,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
             )}
           </Popover>
 
-          <main className="px-4 mx-auto mt-12 max-w-7xl sm:mt-24">
+          <main className="px-4 mx-auto mt-12 sm:mt-24 max-w-7xl ">
             {children}
           </main>
         </div>
