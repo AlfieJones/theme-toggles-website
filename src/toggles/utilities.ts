@@ -1,3 +1,8 @@
+import { ButtonHTML, ButtonJSX } from "./varients/button"
+import { CheckboxHTML, CheckboxJSX } from "./varients/checkbox"
+import prettier from "prettier/standalone"
+import parser from "prettier/parser-typescript"
+
 function importIcons(r: any) {
   return r.keys().map((fileName: string) => {
     const name = fileName.substr(2).replace(/\.svg$/, "")
@@ -47,16 +52,9 @@ function serialize(component: any) {
   return code
 }
 
-export function copyIcon(
-  icon: any,
-  as: "jsx" | "html",
-  container: (svg: any) => any
-) {
-  let jsx = container(serialize(icon.svg))
-
-  if (as === "jsx") return jsx
-
-  return jsx
+export function generateCode(icon: any) {
+  const jsxBasic = serialize(icon.svg)
+  const htmlBasic = jsxBasic
     .replace("className=", "class=")
     .replace(/=\{([^}]+)\}/g, '="$1"')
     .replace(
@@ -70,4 +68,43 @@ export function copyIcon(
         '="'
     )
     .replace("view-box=", "viewBox=")
+
+  return {
+    button: {
+      html: prettier
+        .format(ButtonHTML(htmlBasic), {
+          semi: false,
+          parser: "typescript",
+          plugins: [parser],
+        })
+        .replace(";", "")
+        .replace(/[\r\n]+$/, ""),
+      jsx: prettier
+        .format(ButtonJSX(jsxBasic), {
+          semi: false,
+          parser: "typescript",
+          plugins: [parser],
+        })
+        .replace(";", "")
+        .replace(/[\r\n]+$/, ""),
+    },
+    checkbox: {
+      html: prettier
+        .format(CheckboxHTML(htmlBasic), {
+          semi: false,
+          parser: "typescript",
+          plugins: [parser],
+        })
+        .replace(";", "")
+        .replace(/[\r\n]+$/, ""),
+      jsx: prettier
+        .format(CheckboxHTML(jsxBasic), {
+          semi: false,
+          parser: "typescript",
+          plugins: [parser],
+        })
+        .replace(";", "")
+        .replace(/[\r\n]+$/, ""),
+    },
+  }
 }

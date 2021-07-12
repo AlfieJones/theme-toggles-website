@@ -4,18 +4,14 @@ import clsx from "clsx"
 import { vscDarkPlus } from "/node_modules/react-syntax-highlighter/dist/esm/styles/prism"
 // @ts-ignore
 import jsx from "/node_modules/react-syntax-highlighter/dist/esm/languages/prism/jsx"
-import Button from "../toggles/varients/button"
-import { copyIcon, icons } from "../toggles/utilities"
-import prettier from "prettier/standalone"
-import parser from "prettier/parser-typescript"
-import Checkbox from "../toggles/varients/checkbox"
+import { generateCode, icons } from "../toggles/utilities"
 import { useState } from "react"
 
 const tabs = ["HTML", "JSX"]
 
 SyntaxHighlighter.registerLanguage("jsx", jsx)
 
-export default function Toggles() {
+export default function Toggles({ code }: any) {
   const [activeTab, setActiveTab] = useState(tabs[0])
   return (
     <>
@@ -89,34 +85,33 @@ export default function Toggles() {
             <SyntaxHighlighter
               language="jsx"
               style={vscDarkPlus}
-              customStyle={{ borderRadius: "0.375rem" }}
+              customStyle={{
+                borderRadius: "0.375rem",
+                padding: "1em 1em 2em",
+              }}
             >
-              {prettier
-                .format(copyIcon(icons[0], "jsx", Button), {
-                  semi: false,
-                  parser: "typescript",
-                  plugins: [parser],
-                })
-                .replace(";", "")}
+              {code.button.jsx}
             </SyntaxHighlighter>
           )}
           {activeTab === "HTML" && (
             <SyntaxHighlighter
               language="jsx"
               style={vscDarkPlus}
-              customStyle={{ borderRadius: "0.375rem" }}
+              customStyle={{ borderRadius: "0.375rem", padding: "1em 1em 2em" }}
             >
-              {prettier
-                .format(copyIcon(icons[0], "html", Button), {
-                  semi: false,
-                  parser: "typescript",
-                  plugins: [parser],
-                })
-                .replace(";", "")}
+              {code.button.html}
             </SyntaxHighlighter>
           )}
         </div>
       </div>
     </>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      code: generateCode(icons[0]),
+    },
+  }
 }
