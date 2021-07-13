@@ -45,7 +45,6 @@ export default function Toggles({ code, toggle }: any) {
       default:
         container = code.button
     }
-    console.log(container)
     switch (activeTab) {
       case "HTML":
         setActiveCode(container.html)
@@ -57,8 +56,6 @@ export default function Toggles({ code, toggle }: any) {
         setActiveCode(container.html)
     }
   }, [selected, activeTab, code])
-
-  console.log(toggle)
 
   return (
     <>
