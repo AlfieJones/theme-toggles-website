@@ -1,33 +1,7 @@
 import clsx from "clsx"
 import Link from "next/link"
 import React, { FC } from "react"
-
-const toggles = [
-  {
-    name: "Inner Moon",
-    description: "Inspired by Google fonts toggle",
-    href: "/toggles",
-    classes: "dark:bg-[#6593F5] bg-[#bfd2fa]",
-  },
-  {
-    name: "Inner Moon 2",
-    description: "Inspired by Google fonts toggle",
-    href: "/toggles",
-    classes: "dark:bg-[#57A0D3] bg-[#a4cbe7]",
-  },
-  {
-    name: "Inner Moon 3",
-    description: "Inspired by Google fonts toggle",
-    href: "/toggles",
-    classes: "dark:bg-[#81D8D0] bg-[#bae2de]",
-  },
-  {
-    name: "Inner Moon 4",
-    description: "Inspired by Google fonts toggle",
-    href: "/toggles",
-    classes: "dark:bg-[#008ECC] bg-[#8acbe7]",
-  },
-]
+import { toggles } from "../../toggles/data/meta"
 
 const ToggleGrid: FC = () => {
   return (
@@ -40,7 +14,7 @@ const ToggleGrid: FC = () => {
           key={item.name}
           className="relative w-full max-w-[17rem] rounded-md hover:scale-105 transition-transform shadow-md dark:shadow-lg-strong"
         >
-          <div className={clsx("rounded-t-md ", item.classes)}>
+          <div className={clsx("rounded-t-md ", item.classesGrid)}>
             <label className="theme-toggle">
               <input type="checkbox" />
               <span className="sr-only">Toggle theme</span>
@@ -61,17 +35,17 @@ const ToggleGrid: FC = () => {
               </svg>
             </label>
           </div>
-          <Link href={item.href}>
+          <Link href={item.svg}>
             <a>
               <div className="p-2 dark:bg-dark-850 rounded-b-md">
-                <h3 className="block text-xl font-medium text-gray-900 truncate dark:text-gray-100">
+                <h3 className="block text-xl font-bold text-gray-700 truncate dark:text-gray-100">
                   {item.name}
                 </h3>
                 <p className="block pt-1 pb-5 text-sm font-medium text-gray-500 dark:text-gray-300">
                   {item.description}
                 </p>
-                <p className="font-semibold text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400">
-                  Get started
+                <p className="font-semibold text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
+                  See the code
                 </p>
               </div>
             </a>
