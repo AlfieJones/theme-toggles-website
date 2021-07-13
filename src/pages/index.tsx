@@ -18,7 +18,7 @@ export default function Home() {
         </p>
       </div>
       <section className="mt-24">
-        <h2 className="mb-12 text-4xl font-semibold text-gray-700 dark:text-gray-50 ">
+        <h2 className="mb-12 text-4xl font-semibold text-gray-700 xs:text-center dark:text-gray-50 ">
           Our toggle collection
         </h2>
         <ToggleGrid />
