@@ -2,6 +2,7 @@ import { ButtonHTML, ButtonJSX } from "./varients/button"
 import { CheckboxHTML, CheckboxJSX } from "./varients/checkbox"
 import prettier from "prettier/standalone"
 import parser from "prettier/parser-typescript"
+import { DivHTML, DivJSX } from "./varients/div"
 
 function importIcons(r: any) {
   return r.keys().map((fileName: string) => {
@@ -99,6 +100,24 @@ export function generateCode(icon: any) {
         .replace(/[\r\n]+$/, ""),
       jsx: prettier
         .format(CheckboxHTML(jsxBasic), {
+          semi: false,
+          parser: "typescript",
+          plugins: [parser],
+        })
+        .replace(";", "")
+        .replace(/[\r\n]+$/, ""),
+    },
+    div: {
+      html: prettier
+        .format(DivHTML(htmlBasic), {
+          semi: false,
+          parser: "typescript",
+          plugins: [parser],
+        })
+        .replace(";", "")
+        .replace(/[\r\n]+$/, ""),
+      jsx: prettier
+        .format(DivJSX(jsxBasic), {
           semi: false,
           parser: "typescript",
           plugins: [parser],
