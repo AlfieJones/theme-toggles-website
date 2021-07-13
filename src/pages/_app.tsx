@@ -4,15 +4,12 @@ import React from "react"
 import type { AppProps } from "next/app"
 import { Layout } from "../components"
 import { ThemeProvider } from "next-theme"
-import { AnimateSharedLayout } from "framer-motion"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
       <Layout>
-        <AnimateSharedLayout>
-          <Component {...pageProps} />
-        </AnimateSharedLayout>
+        <Component {...pageProps} />
       </Layout>
     </ThemeProvider>
   )

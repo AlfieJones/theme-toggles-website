@@ -65,16 +65,14 @@ export default function Toggles({ code }: any) {
       <p className="mt-4 text-xl text-gray-500 dark:text-gray-400">
         Inspired by Google fonts toggle
       </p>
-      <div className="flex items-center">
-        <div className="">
+      <div className="flex flex-col items-center mt-12 md:mt-24 md:flex-row">
+        <div className="px-12 mb-12 lg:px-24 md:mb-0">
           <label className="theme-toggle">
             <input type="checkbox" />
             <span className="sr-only">Toggle theme</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-full h-auto py-5 text-gray-900 dark:text-gray-50 inner-moon"
-              width="472.39"
-              height="472.39"
+              className="w-56 py-5 text-gray-900 lg:w-64 dark:text-gray-50 inner-moon"
               fill="currentColor"
               viewBox="0 0 472.39 472.39"
             >
@@ -87,9 +85,9 @@ export default function Toggles({ code }: any) {
             </svg>
           </label>
         </div>
-        <div className="p-2 overflow-x-hidden rounded-md bg-dark-800">
-          <div className="flex mx-2 border-b border-dark-50">
-            <nav className="space-x-2" aria-label="Tabs">
+        <div className="w-full p-2 overflow-x-hidden rounded-md bg-dark-800">
+          <div className="flex flex-wrap-reverse mx-2 border-b border-dark-50">
+            <nav className="block pr-16 space-x-2" aria-label="Tabs">
               {tabs.map((tab) => (
                 <button
                   key={tab}
@@ -106,92 +104,93 @@ export default function Toggles({ code }: any) {
                 </button>
               ))}
             </nav>
-            <Listbox value={selected} onChange={setSelected}>
-              <Listbox.Label className="sr-only">HTML Element</Listbox.Label>
-              <div className="relative mt-1 ml-auto">
-                <Listbox.Button className="relative self-end min-w-[5.5rem] w-full py-2 pl-3 pr-10 text-left rounded-md shadow-sm bg-dark-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                  <span className="block truncate text-gray-50">
-                    {selected}
-                  </span>
-                  <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                    <SelectorIcon
-                      className="w-5 h-5 text-gray-200"
-                      aria-hidden="true"
-                    />
-                  </span>
-                </Listbox.Button>
-
-                <Transition
-                  as={Fragment}
-                  leave="transition ease-in duration-100"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
-                >
-                  <Listbox.Options
-                    static
-                    className="absolute z-10 w-full py-1 mt-1 overflow-auto text-base rounded-md shadow-lg bg-dark-400 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+            <div className="flex ml-auto">
+              <Listbox value={selected} onChange={setSelected}>
+                <Listbox.Label className="sr-only">HTML Element</Listbox.Label>
+                <div className="relative mt-1">
+                  <Listbox.Button className="relative self-end min-w-[5.5rem] w-full py-2 pl-3 pr-10 text-left rounded-md shadow-sm bg-dark-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    <span className="block truncate text-gray-50">
+                      {selected}
+                    </span>
+                    <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                      <SelectorIcon
+                        className="w-5 h-5 text-gray-200"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </Listbox.Button>
+                  <Transition
+                    as={Fragment}
+                    leave="transition ease-in duration-100"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
                   >
-                    {variants.map((person) => (
-                      <Listbox.Option
-                        key={person}
-                        className={({ active }) =>
-                          clsx(
-                            active
-                              ? "text-gray-50 bg-dark-50"
-                              : "text-gray-300",
-                            "cursor-pointer select-none relative py-2 pl-3 pr-5"
-                          )
-                        }
-                        value={person}
-                      >
-                        {({ selected }) => (
-                          <>
-                            <span
-                              className={clsx(
-                                selected
-                                  ? "font-semibold text-gray-50"
-                                  : "font-normal",
-                                "block truncate"
-                              )}
-                            >
-                              {person}
-                            </span>
-
-                            {selected ? (
+                    <Listbox.Options
+                      static
+                      className="absolute z-10 w-full py-1 mt-1 overflow-auto text-base rounded-md shadow-lg bg-dark-400 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+                    >
+                      {variants.map((person) => (
+                        <Listbox.Option
+                          key={person}
+                          className={({ active }) =>
+                            clsx(
+                              active
+                                ? "text-gray-50 bg-dark-50"
+                                : "text-gray-300",
+                              "cursor-pointer select-none relative py-2 pl-3 pr-5"
+                            )
+                          }
+                          value={person}
+                        >
+                          {({ selected }) => (
+                            <>
                               <span
                                 className={clsx(
-                                  "text-blue-600",
-                                  "absolute inset-y-0 right-0 flex items-center pr-2"
+                                  selected
+                                    ? "font-semibold text-gray-50"
+                                    : "font-normal",
+                                  "block truncate"
                                 )}
                               >
-                                <CheckIcon
-                                  className="w-5 h-5"
-                                  aria-hidden="true"
-                                />
+                                {person}
                               </span>
-                            ) : null}
-                          </>
-                        )}
-                      </Listbox.Option>
-                    ))}
-                  </Listbox.Options>
-                </Transition>
-              </div>
-            </Listbox>
-            <CopyToClipboard
-              text={activeCode}
-              onCopy={() => {
-                setShow(true)
-                setTimeout(() => setShow(false), 4000)
-              }}
-            >
-              <button type="button" className="ml-5 mr-2">
-                <ClipboardCopyIcon
-                  className="w-5 h-5 text-white"
-                  aria-hidden="true"
-                />
-              </button>
-            </CopyToClipboard>
+
+                              {selected ? (
+                                <span
+                                  className={clsx(
+                                    "text-blue-600",
+                                    "absolute inset-y-0 right-0 flex items-center pr-2"
+                                  )}
+                                >
+                                  <CheckIcon
+                                    className="w-5 h-5"
+                                    aria-hidden="true"
+                                  />
+                                </span>
+                              ) : null}
+                            </>
+                          )}
+                        </Listbox.Option>
+                      ))}
+                    </Listbox.Options>
+                  </Transition>
+                </div>
+              </Listbox>
+              <CopyToClipboard
+                text={activeCode}
+                onCopy={() => {
+                  setShow(true)
+                  setTimeout(() => setShow(false), 4000)
+                }}
+              >
+                <button type="button" className="ml-5 mr-2">
+                  <ClipboardCopyIcon
+                    className="w-5 h-5 text-white"
+                    aria-hidden="true"
+                  />
+                </button>
+              </CopyToClipboard>
+            </div>
           </div>
           <div className="overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-dark-50 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
             <SyntaxHighlighter
