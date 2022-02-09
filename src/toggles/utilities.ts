@@ -4,7 +4,7 @@ import prettier from "prettier/standalone"
 import parser from "prettier/parser-typescript"
 import { DivHTML, DivJSX } from "./varients/div"
 
-function importIcons(r: any) {
+function importToggles(r: any) {
   return r.keys().map((fileName: string) => {
     const name = fileName.substr(2).replace(/\.svg$/, "")
     return {
@@ -14,9 +14,9 @@ function importIcons(r: any) {
   })
 }
 
-export const icons = importIcons(
+export const toggles = importToggles(
   // @ts-ignore
-  require.context(`theme-toggles/svgs/`, false, /\.svg$/)
+  require.context(`theme-toggles/assets/svgs/`, false, /\.svg$/)
 )
 
 function stringifyAttrs(attrs: any, filter = (i: any) => true) {
@@ -37,8 +37,9 @@ function castArray(value: any) {
 }
 
 function serialize(component: any) {
+  if (!component.type) return ""
   let code = ""
-  let { children, ...props } = component.props
+  let { children = null, ...props } = component.props
   if (typeof component.type === "string") {
     if (children) {
       code += `<${component.type}${stringifyAttrs(props)}>${castArray(children)
@@ -53,10 +54,10 @@ function serialize(component: any) {
   return code
 }
 
-export function generateCode(icon: any) {
-  const jsxBasic = serialize(icon.svg)
+export function generateCode(toggle: any) {
+  const jsxBasic = serialize(toggle.svg)
   const htmlBasic = jsxBasic
-    .replace("className=", "class=")
+    .replace(/className=/g, "class=")
     .replace(/=\{([^}]+)\}/g, '="$1"')
     .replace(
       /(\s)([a-z]+)="/gi,
@@ -68,7 +69,7 @@ export function generateCode(icon: any) {
         ) +
         '="'
     )
-    .replace("view-box=", "viewBox=")
+    .replace(/view-box=/g, "viewBox=")
 
   return {
     button: {
@@ -99,7 +100,7 @@ export function generateCode(icon: any) {
         .replace(";", "")
         .replace(/[\r\n]+$/, ""),
       jsx: prettier
-        .format(CheckboxHTML(jsxBasic), {
+        .format(CheckboxJSX(jsxBasic), {
           semi: false,
           parser: "typescript",
           plugins: [parser],

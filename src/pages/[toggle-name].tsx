@@ -4,8 +4,9 @@ import clsx from "clsx"
 import { vscDarkPlus } from "./../../node_modules/react-syntax-highlighter/dist/esm/styles/prism"
 // @ts-ignore
 import jsx from "./../../node_modules/react-syntax-highlighter/dist/esm/languages/prism/jsx"
-import { generateCode, icons } from "../toggles/utilities"
+import { generateCode, toggles } from "../toggles/utilities"
 import React, { Fragment, useEffect, useState } from "react"
+import ReactHtmlParser, { convertNodeToElement } from "react-html-parser"
 import {
   CheckCircleIcon,
   CheckIcon,
@@ -15,13 +16,37 @@ import {
 import { ClipboardCopyIcon } from "@heroicons/react/solid"
 import { Listbox, Transition } from "@headlessui/react"
 import { CopyToClipboard } from "react-copy-to-clipboard"
-import { toggles } from "../toggles/data/meta"
+import { toggles as togglesMeta } from "../toggles/data/meta"
 
 const tabs = ["HTML", "JSX"]
 
 const variants = ["Button", "Checkbox", "Div"]
 
 SyntaxHighlighter.registerLanguage("jsx", jsx)
+
+const preprocessNodes = (classes: string) => (node: any) => {
+  // do not render any <span> tags
+  node[0].children[5].attribs = {
+    ...node[0].children[5].attribs,
+    class: `w-56 py-5 lg:w-64 inner-moon ${classes}`,
+  }
+  return node
+}
+
+// Fixes issue where viewBox is viewbox
+function transformFn(node: any) {
+  if (node.name === "svg") {
+    const { viewbox, ...rest } = node.attribs
+
+    return (
+      <svg {...rest} viewBox={viewbox}>
+        {node.children.map((child: any, index: number) => {
+          return convertNodeToElement(child, index, transformFn)
+        })}
+      </svg>
+    )
+  }
+}
 
 export default function Toggles({ code, toggle }: any) {
   const [activeTab, setActiveTab] = useState(tabs[0])
@@ -68,26 +93,10 @@ export default function Toggles({ code, toggle }: any) {
       <div className="flex flex-col items-center mt-12 md:items-start md:mt-24 md:flex-row">
         <div className="h-full px-6 mb-6 lg:px-12 md:mb-0 ">
           <div className="p-6 first-line:rounded-md">
-            <label className="theme-toggle">
-              <input type="checkbox" />
-              <span className="sr-only">Toggle theme</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className={clsx(
-                  "w-56 py-5 lg:w-64 inner-moon",
-                  toggle.classesToggle
-                )}
-                fill="currentColor"
-                viewBox="0 0 472.39 472.39"
-              >
-                <g className="toggle-outer">
-                  <path d="M403.21,167V69.18H305.38L236.2,0,167,69.18H69.18V167L0,236.2l69.18,69.18v97.83H167l69.18,69.18,69.18-69.18h97.83V305.38l69.18-69.18Zm-167,198.17a129,129,0,1,1,129-129A129,129,0,0,1,236.2,365.19Z" />
-                </g>
-                <g className="toggle-inner">
-                  <circle cx="236.2" cy="236.2" r="103.78" />
-                </g>
-              </svg>
-            </label>
+            {ReactHtmlParser(code.checkbox.html, {
+              preprocessNodes: preprocessNodes(toggle.classesToggle),
+              transform: transformFn,
+            })}
           </div>
         </div>
         <div className="w-full p-2 overflow-x-hidden rounded-md bg-dark-800">
@@ -266,18 +275,22 @@ export default function Toggles({ code, toggle }: any) {
 export async function getStaticProps(context: {
   params: { [x: string]: string }
 }) {
-  const toggle = toggles.find((t) => t.svg === context.params["toggle-name"])
+  const toggleMeta = togglesMeta.find(
+    (t) => t.svg === context.params["toggle-name"]
+  )
+  const toggle = toggles.find(
+    (toggle: { name: string }) => toggle.name === toggleMeta?.svg
+  )
   return {
     props: {
-      code: generateCode(icons[0]),
-      toggle: toggle,
+      code: generateCode(toggle),
+      toggle: toggleMeta,
     },
   }
 }
 
 export async function getStaticPaths() {
-  const result = toggles.map((t) => ({ params: { "toggle-name": t.svg } }))
-
+  const result = togglesMeta.map((t) => ({ params: { "toggle-name": t.svg } }))
   return {
     paths: result,
     fallback: false, // See the "fallback" section below

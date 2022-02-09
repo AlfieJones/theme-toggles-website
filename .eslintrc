@@ -3,6 +3,6 @@
   "plugins": ["prettier"],
   "rules":{
     "prettier/prettier": "error",
-    "@next/next/no-img-element": "off",
+    "@next/next/no-img-element": "off"
   }
 }
