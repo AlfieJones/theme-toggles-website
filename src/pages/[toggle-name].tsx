@@ -1,9 +1,9 @@
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
 import clsx from "clsx"
 // @ts-ignore
-import { vscDarkPlus } from "/node_modules/react-syntax-highlighter/dist/esm/styles/prism"
+import { vscDarkPlus } from "./../../node_modules/react-syntax-highlighter/dist/esm/styles/prism"
 // @ts-ignore
-import jsx from "/node_modules/react-syntax-highlighter/dist/esm/languages/prism/jsx"
+import jsx from "./../../node_modules/react-syntax-highlighter/dist/esm/languages/prism/jsx"
 import { generateCode, icons } from "../toggles/utilities"
 import React, { Fragment, useEffect, useState } from "react"
 import {
