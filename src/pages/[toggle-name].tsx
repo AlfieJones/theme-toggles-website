@@ -85,10 +85,10 @@ export default function Toggles({ code, toggle }: any) {
   return (
     <>
       <h1 className="ml-4 text-6xl font-bold text-gray-700 dark:text-white">
-        Inner Moon
+        {toggle.name}
       </h1>
       <p className="mt-4 ml-4 text-2xl text-gray-500 dark:text-gray-400">
-        Inspired by Google fonts toggle
+        {toggle.description}
       </p>
       <div className="flex flex-col items-center mt-12 md:items-start md:mt-24 md:flex-row">
         <div className="h-full px-6 mb-6 lg:px-12 md:mb-0 ">

@@ -1,6 +1,8 @@
 import { ToggleGrid } from "../components"
+import { toggles as toggleMeta } from "../toggles/data/meta"
+import { generateCode, toggles as toggleList } from "../toggles/utilities"
 
-export default function Home() {
+export default function Home({ toggles }: any) {
   return (
     <>
       <div className="text-center">
@@ -21,8 +23,30 @@ export default function Home() {
         <h2 className="mb-12 text-4xl font-semibold text-center text-gray-700 xs:text-left dark:text-gray-50 ">
           Our toggle collection
         </h2>
-        <ToggleGrid />
+        <ToggleGrid toggles={toggles} />
       </section>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const toggles: {
+    name: string
+    svg: string
+    description: string
+    classesGrid: string
+    classesToggle: string
+    code?: string
+  }[] = toggleMeta
+  toggles.forEach((t) => {
+    t.code = generateCode(
+      toggleList.find((i: any) => i.name === t.svg)
+    ).checkbox.html
+  })
+
+  return {
+    props: {
+      toggles,
+    },
+  }
 }
