@@ -27,7 +27,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link
-            href="https://unpkg.com/theme-toggles@1.1.3/build/bundle-min.css"
+            href="https://unpkg.com/theme-toggles@1.2.0/build/bundle-min.css"
             rel="stylesheet"
           />
         </Head>

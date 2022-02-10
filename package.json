@@ -26,7 +26,7 @@
     "react-html-parser": "^2.0.2",
     "react-syntax-highlighter": "^15.4.3",
     "simple-functional-loader": "^1.2.1",
-    "theme-toggles": "^1.1.4"
+    "theme-toggles": "^1.2.6"
   },
   "devDependencies": {
     "@types/node": "^17.0.16",

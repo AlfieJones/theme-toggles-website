@@ -70,6 +70,7 @@ export function generateCode(toggle: any) {
         '="'
     )
     .replace(/view-box=/g, "viewBox=")
+    .replace(/path-length=/g, "pathLength=")
 
   return {
     button: {

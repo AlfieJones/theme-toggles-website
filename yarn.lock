@@ -2657,10 +2657,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-theme-toggles@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/theme-toggles/-/theme-toggles-1.1.4.tgz#00c5ce2cc430d461c18f604673aa6fea2da5ca5b"
-  integrity sha512-4gaF2JPU9XgX+FJ5kbg8zLKFXrcf+ItgjHsJhRdvGLrw3dmquvDq6O7ygFKBEuwhkwXErPWXRMrR0o3doxhtVA==
+theme-toggles@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/theme-toggles/-/theme-toggles-1.2.6.tgz#913e73439608874dba20401898fcd73ae6bbee05"
+  integrity sha512-5CqDCBunKBvlZoIn1we7my5X8PTpz2n6wrcQA6Pd/CQJ/Ha1InhfHt4Ygj6eoYRnOQsW3ApqRScL9n9ebdXOAA==
 
 tmp@^0.2.1:
   version "0.2.1"

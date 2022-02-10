@@ -13,4 +13,11 @@ export const toggles = [
     classesGrid: "dark:bg-[#6593F5] bg-[#bfd2fa]",
     classesToggle: "text-[#6593F5]",
   },
+  {
+    name: "Lightbulb",
+    svg: "lightbulb",
+    description: "A simple but elegant lightbulb",
+    classesGrid: "dark:bg-[#81D8D0] bg-[#bae2de]",
+    classesToggle: "text-[#81D8D0]",
+  },
 ]
