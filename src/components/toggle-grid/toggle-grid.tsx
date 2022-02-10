@@ -20,9 +20,32 @@ function transformFn(node: any) {
     return (
       <svg {...rest} viewBox={viewbox}>
         {node.children.map((child: any, index: number) => {
+          if (child.name === "path") {
+            const { pathlength, ...rest } = child.attribs
+
+            return (
+              <path {...rest} pathLength={pathlength}>
+                {child.children.map((child2: any, index: number) => {
+                  return convertNodeToElement(child2, index, transformFn)
+                })}
+              </path>
+            )
+          }
           return convertNodeToElement(child, index, transformFn)
         })}
       </svg>
+    )
+  }
+
+  if (node.name === "path") {
+    const { pathlength, ...rest } = node.attribs
+
+    return (
+      <path {...rest} pathLength={pathlength}>
+        {node.children.map((child: any, index: number) => {
+          return convertNodeToElement(child, index, transformFn)
+        })}
+      </path>
     )
   }
 }
