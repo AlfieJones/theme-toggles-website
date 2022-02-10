@@ -1,4 +1,4 @@
-import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
+import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter"
 import clsx from "clsx"
 // @ts-ignore
 import { vscDarkPlus } from "./../../node_modules/react-syntax-highlighter/dist/esm/styles/prism"

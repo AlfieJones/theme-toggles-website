@@ -1,6 +1,10 @@
 const { createLoader } = require("simple-functional-loader")
 
-module.exports = {
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: true,
+})
+
+module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   images: {
     disableStaticImages: true,
@@ -49,4 +53,4 @@ module.exports = {
 
     return config
   },
-}
+})

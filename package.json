@@ -12,9 +12,11 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "sideEffects": false,
   "dependencies": {
     "@headlessui/react": "^1.3.0",
     "@heroicons/react": "^1.0.2",
+    "@next/bundle-analyzer": "^12.0.10",
     "file-loader": "^6.2.0",
     "html-entities": "^2.3.2",
     "next": "12",
@@ -26,7 +28,7 @@
     "react-html-parser": "^2.0.2",
     "react-syntax-highlighter": "^15.4.3",
     "simple-functional-loader": "^1.2.1",
-    "theme-toggles": "^1.3.0"
+    "theme-toggles": "^1.3.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.16",
