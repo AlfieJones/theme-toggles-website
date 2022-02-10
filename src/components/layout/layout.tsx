@@ -39,16 +39,17 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                           <svg
                             onClick={toggle}
                             xmlns="http://www.w3.org/2000/svg"
-                            className="w-8 h-8 text-gray-700 inner-moon dark:text-gray-300"
+                            id="inner-moon"
+                            className="w-8 h-8 text-gray-700 dark:text-gray-300"
                             width="472.39"
                             height="472.39"
                             fill="currentColor"
                             viewBox="0 0 472.39 472.39"
                           >
-                            <g className="toggle-outer">
+                            <g id="toggle-outer">
                               <path d="M403.21,167V69.18H305.38L236.2,0,167,69.18H69.18V167L0,236.2l69.18,69.18v97.83H167l69.18,69.18,69.18-69.18h97.83V305.38l69.18-69.18Zm-167,198.17a129,129,0,1,1,129-129A129,129,0,0,1,236.2,365.19Z" />
                             </g>
-                            <g className="toggle-inner">
+                            <g id="toggle-inner">
                               <circle cx="236.2" cy="236.2" r="103.78" />
                             </g>
                           </svg>
