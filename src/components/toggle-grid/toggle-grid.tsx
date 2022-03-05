@@ -62,14 +62,10 @@ const ToggleGrid: FC<{ toggles: any }> = ({ toggles }: any) => {
           className="relative w-full max-w-[17rem] rounded-md hover:scale-105 transition-transform shadow-md dark:shadow-lg-strong"
         >
           <div className={clsx("rounded-t-md ", item.classesGrid)}>
-            <label className="theme-toggle">
-              <input type="checkbox" />
-              <span className="sr-only">Toggle theme</span>
-              {ReactHtmlParser(item.code, {
-                preprocessNodes: preprocessNodes,
-                transform: transformFn,
-              })}
-            </label>
+            {ReactHtmlParser(item.code, {
+              preprocessNodes: preprocessNodes,
+              transform: transformFn,
+            })}
           </div>
           <Link href={`/${item.svg}`}>
             <a>
