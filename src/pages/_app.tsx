@@ -1,9 +1,8 @@
 import "../styles/globals.css"
-
 import React from "react"
 import type { AppProps } from "next/app"
 import { Layout } from "../components"
-import { ThemeProvider } from "next-theme"
+import { ThemeProvider } from "next-use-theme"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

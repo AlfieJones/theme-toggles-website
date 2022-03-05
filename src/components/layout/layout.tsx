@@ -5,7 +5,7 @@ import { Popover, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 import { LayoutProps } from "./layout.props"
 import { useRouter } from "next/router"
-import useTheme from "next-theme"
+import { useTheme } from "next-use-theme"
 
 const navigation = [
   { name: "Toggles", href: "/" },
@@ -18,7 +18,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
 
   return (
     <>
-      <div className="relative min-h-screen overflow-hidden dark:bg-dark-900">
+      <div className="relative min-h-screen overflow-hidden bg-white dark:bg-dark-900">
         <div className="relative pt-6 pb-16 xs:pb-24">
           <Popover>
             {({ open }: { open: boolean }) => (
