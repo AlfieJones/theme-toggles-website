@@ -7,7 +7,7 @@ const preprocessNodes = (node: any) => {
   // do not render any <span> tags
   node[0].children[5].attribs = {
     ...node[0].children[5]?.attribs,
-    class: `w-[75%] h-auto mx-auto py-5 text-gray-900`,
+    class: `w-[75%] h-auto mx-auto py-5 text-gray-900 ${node[0].children[5]?.attribs.class}`,
   }
   return node
 }

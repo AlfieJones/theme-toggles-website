@@ -28,7 +28,7 @@ const preprocessNodes = (classes: string) => (node: any) => {
   // do not render any <span> tags
   node[0].children[5].attribs = {
     ...node[0].children[5].attribs,
-    class: `w-56 py-5 lg:w-64 inner-moon ${classes}`,
+    class: `${node[0].children[5].attribs.class} w-56 py-5 lg:w-64 inner-moon ${classes}`,
   }
   return node
 }
