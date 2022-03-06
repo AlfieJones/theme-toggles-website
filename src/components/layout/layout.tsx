@@ -14,7 +14,7 @@ const navigation = [
 
 const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const router = useRouter()
-  const { toggle } = useTheme()
+  const { toggle, resolvedTheme } = useTheme()
 
   return (
     <>
@@ -31,26 +31,26 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                     <div className="flex items-center flex-1 xs:absolute xs:inset-y-0 xs:left-0">
                       <div className="flex items-center justify-between w-full h-8 xs:w-auto">
                         <button
-                          className="theme-toggle"
+                          className={clsx(
+                            "theme-toggle",
+                            resolvedTheme === "dark" && "theme-toggle--toggled"
+                          )}
                           type="button"
                           aria-label="Toggle theme"
                           onClick={toggle}
                         >
                           <svg
-                            onClick={toggle}
                             xmlns="http://www.w3.org/2000/svg"
-                            id="inner-moon"
-                            className="w-8 h-8 text-gray-700 dark:text-gray-300"
-                            width="472.39"
-                            height="472.39"
+                            strokeLinecap="round"
                             fill="currentColor"
+                            className="w-8 h-8 text-gray-700 theme-toggle__inner-moon dark:text-gray-300"
                             viewBox="0 0 472.39 472.39"
                           >
-                            <g id="toggle-outer">
+                            <g className="theme-toggle__inner-moon__toggle-outer">
                               <path d="M403.21,167V69.18H305.38L236.2,0,167,69.18H69.18V167L0,236.2l69.18,69.18v97.83H167l69.18,69.18,69.18-69.18h97.83V305.38l69.18-69.18Zm-167,198.17a129,129,0,1,1,129-129A129,129,0,0,1,236.2,365.19Z" />
                             </g>
-                            <g id="toggle-inner">
-                              <circle cx="236.2" cy="236.2" r="103.78" />
+                            <g className="theme-toggle__inner-moon__toggle-inner">
+                              <circle cx={236.2} cy={236.2} r={103.78} />
                             </g>
                           </svg>
                         </button>

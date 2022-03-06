@@ -18,7 +18,7 @@ const Document = () => {
           rel="stylesheet"
         />
         <link
-          href="https://unpkg.com/theme-toggles@1.4.8/build/bundle-min.css"
+          href="https://unpkg.com/theme-toggles@2.0.0/build/bundle.min.css"
           rel="stylesheet"
         />
       </Head>
