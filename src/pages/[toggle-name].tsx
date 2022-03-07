@@ -1,9 +1,10 @@
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter"
 import clsx from "clsx"
-// @ts-ignore
+
 import {
   coldarkDark,
   coldarkCold,
+  // @ts-ignore
 } from "./../../node_modules/react-syntax-highlighter/dist/esm/styles/prism"
 // @ts-ignore
 import jsx from "./../../node_modules/react-syntax-highlighter/dist/esm/languages/prism/jsx"
