@@ -1,4 +1,4 @@
-import React, { FC, Fragment, useEffect, useState } from "react"
+import React, { FC, Fragment } from "react"
 import Link from "next/link"
 import clsx from "clsx"
 import { Popover, Transition } from "@headlessui/react"
