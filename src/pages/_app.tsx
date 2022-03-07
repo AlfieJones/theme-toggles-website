@@ -1,17 +1,30 @@
 import "../styles/globals.css"
 import "@theme-toggles/react/dist/css/bundle.css"
 
-import React from "react"
-import type { AppProps } from "next/app"
-import { Layout } from "../components"
+import React, { FC, Fragment } from "react"
 import { ThemeProvider } from "next-use-theme"
+import { NextPage } from "next"
+import { AppProps } from "next/app"
 
-function MyApp({ Component, pageProps }: AppProps) {
+type NextPageWithLayout = NextPage & {
+  PrimaryLayout?: FC
+  SecondaryLayout?: FC
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const PrimaryLayout = Component.PrimaryLayout || Fragment
+  const SecondaryLayout = Component.SecondaryLayout || Fragment
   return (
     <ThemeProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <PrimaryLayout>
+        <SecondaryLayout>
+          <Component {...pageProps} />
+        </SecondaryLayout>
+      </PrimaryLayout>
     </ThemeProvider>
   )
 }

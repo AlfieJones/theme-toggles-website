@@ -1,9 +1,9 @@
-import React, { FC, Fragment } from "react"
+import React, { FC, Fragment, ReactNode } from "react"
 import Link from "next/link"
 import clsx from "clsx"
 import { Popover, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
-import { LayoutProps } from "./layout.props"
+import { LayoutProps } from "./main.props"
 import { useRouter } from "next/router"
 import { useTheme } from "next-use-theme"
 import { InnerMoon } from "@theme-toggles/react"
@@ -33,13 +33,13 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                       <div className="flex items-center justify-between w-full h-8 xs:w-auto">
                         {typeof window !== "undefined" && (
                           <InnerMoon
-                            className="text-3xl text-gray-700 dark:text-gray-300"
+                            className="text-3xl text-zinc-700 dark:text-zinc-300"
                             toggled={theme === "dark"}
                             onToggle={toggle}
                           />
                         )}
                         <div className="flex items-center -mr-2 xs:hidden">
-                          <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md dark:text-gray-300 dark:hover:text-gray-200 hover:text-gray-500 dark:hover:bg-dark-800 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                          <Popover.Button className="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 dark:text-zinc-300 dark:hover:text-zinc-200 hover:text-zinc-500 dark:hover:bg-dark-800 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                             <span className="sr-only">Open main menu</span>
                             <MenuIcon className="w-6 h-6" aria-hidden="true" />
                           </Popover.Button>
@@ -51,10 +51,10 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                         <Link key={item.name} href={item.href}>
                           <a
                             className={clsx(
-                              "font-medium  hover:text-gray-900 dark:hover:text-white transition-colors",
+                              "font-medium  hover:text-zinc-900 dark:hover:text-white transition-colors",
                               router.pathname === item.href
-                                ? "text-gray-900 dark:text-white"
-                                : "text-gray-500 dark:text-gray-300"
+                                ? "text-zinc-900 dark:text-white"
+                                : "text-zinc-500 dark:text-zinc-300"
                             )}
                           >
                             {item.name}
@@ -65,7 +65,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                     <div className="hidden xs:absolute xs:flex xs:items-center xs:justify-end xs:inset-y-0 xs:right-0">
                       <a
                         href="https://github.com/alfiejones/theme-toggles"
-                        className="text-gray-400 transition-colors dark:text-gray-300 dark:hover:text-gray-100 hover:text-gray-500"
+                        className="transition-colors text-zinc-400 dark:text-zinc-300 dark:hover:text-zinc-100 hover:text-zinc-500"
                       >
                         <span className="sr-only">Theme toggles on GitHub</span>
                         <svg
@@ -103,7 +103,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                       <div className="flex items-center justify-between px-5 pt-4">
                         <a
                           href="https://github.com/alfiejones/theme-toggles"
-                          className="text-gray-400 transition-colors dark:text-gray-300 dark:hover:text-gray-100 hover:text-gray-500"
+                          className="transition-colors text-zinc-400 dark:text-zinc-300 dark:hover:text-zinc-100 hover:text-zinc-500"
                         >
                           <span className="sr-only">
                             Theme toggles on GitHub
@@ -121,7 +121,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                           </svg>
                         </a>
                         <div className="-mr-2">
-                          <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                          <Popover.Button className="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-zinc-500 dark:hover:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                             <span className="sr-only">Close menu</span>
                             <XIcon className="w-6 h-6" aria-hidden="true" />
                           </Popover.Button>
@@ -133,10 +133,10 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                             key={item.name}
                             href={item.href}
                             className={clsx(
-                              "block px-3 py-2 rounded-md text-base font-medium hover:text-gray-900 hover:bg-gray-50",
+                              "block px-3 py-2 rounded-md text-base font-medium hover:text-zinc-900 hover:bg-zinc-50 dark:hover:bg-dark-700",
                               router.pathname === item.href
-                                ? "text-gray-900"
-                                : "text-gray-500"
+                                ? "text-zinc-900 dark:text-zinc-100"
+                                : "text-zinc-500 dark:text-zinc-400"
                             )}
                           >
                             {item.name}

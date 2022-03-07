@@ -1,15 +1,13 @@
-const { colors } = require("tailwindcss/defaultTheme")
+const colors = require("tailwindcss/colors")
 const defaultTheme = require("tailwindcss/defaultTheme")
 
 module.exports = {
-  mode: "jit",
-  purge: {
-    content: [
-      "./src/pages/**/*.{js,ts,jsx,tsx}",
-      "./src/components/**/*.{js,ts,jsx,tsx}",
-      "./src/toggles/data/meta.ts",
-    ],
-  },
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./src/layouts/**/*.{js,ts,jsx,tsx}",
+    "./src/toggles/data/meta.ts",
+  ],
   darkMode: "class",
   theme: {
     extend: {
@@ -51,10 +49,6 @@ module.exports = {
         900: "#121212",
       },
     },
-  },
-  variants: {
-    extend: {},
-    scrollbar: ["rounded"],
   },
   plugins: [require("tailwind-scrollbar")],
 }

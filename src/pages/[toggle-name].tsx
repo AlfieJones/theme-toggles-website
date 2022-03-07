@@ -14,9 +14,10 @@ import {
   XIcon,
 } from "@heroicons/react/solid"
 import { ClipboardCopyIcon } from "@heroicons/react/solid"
-import { Listbox, Transition } from "@headlessui/react"
+import { Listbox, Switch, Transition } from "@headlessui/react"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { toggles as togglesMeta } from "../toggles/data/meta"
+import Layout from "../layouts/main"
 
 const tabs = ["HTML", "JSX"]
 
@@ -72,7 +73,7 @@ function transformFn(node: any) {
 }
 
 export default function Toggles({ code, toggle }: any) {
-  const [activeTab, setActiveTab] = useState(tabs[0])
+  const [reversed, setReversed] = useState(false)
   const [selected, setSelected] = useState(variants[0])
   const [activeCode, setActiveCode] = useState(code.button.html)
 
@@ -93,17 +94,8 @@ export default function Toggles({ code, toggle }: any) {
       default:
         container = code.button
     }
-    switch (activeTab) {
-      case "HTML":
-        setActiveCode(container.html)
-        break
-      case "JSX":
-        setActiveCode(container.jsx)
-        break
-      default:
-        setActiveCode(container.html)
-    }
-  }, [selected, activeTab, code])
+    setActiveCode(container.html)
+  }, [selected, code])
 
   return (
     <>
@@ -123,18 +115,18 @@ export default function Toggles({ code, toggle }: any) {
           </div>
         </div>
         <div className="w-full p-2 overflow-x-hidden rounded-md bg-dark-800">
-          <div className="flex flex-wrap-reverse mx-2 border-b border-dark-50">
-            <nav className="block pr-16 space-x-2" aria-label="Tabs">
-              {tabs.map((tab) => (
+          <div className="flex flex-wrap-reverse mx-2 overflow-auto border-b border-dark-50">
+            <nav className="flex pr-16 space-x-2" aria-label="Tabs">
+              {variants.map((tab) => (
                 <button
                   key={tab}
                   type="button"
-                  onClick={() => setActiveTab(tab)}
+                  onClick={() => setSelected(tab)}
                   className={clsx(
-                    activeTab === tab
+                    selected === tab
                       ? "border-blue-500 text-blue-500"
                       : "border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-300",
-                    "whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm"
+                    "whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm"
                   )}
                 >
                   {tab}
@@ -142,77 +134,39 @@ export default function Toggles({ code, toggle }: any) {
               ))}
             </nav>
             <div className="flex ml-auto">
-              <Listbox value={selected} onChange={setSelected}>
-                <Listbox.Label className="sr-only">HTML Element</Listbox.Label>
-                <div className="relative mt-1">
-                  <Listbox.Button className="relative self-end min-w-[5.5rem] w-full py-2 pl-3 pr-10 text-left rounded-md shadow-sm bg-dark-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                    <span className="block truncate text-gray-50">
-                      {selected}
-                    </span>
-                    <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                      <SelectorIcon
-                        className="w-5 h-5 text-gray-200"
-                        aria-hidden="true"
-                      />
-                    </span>
-                  </Listbox.Button>
-                  <Transition
-                    as={Fragment}
-                    leave="transition ease-in duration-100"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                  >
-                    <Listbox.Options
-                      static
-                      className="absolute z-10 w-full py-1 mt-1 overflow-auto text-base rounded-md shadow-lg bg-dark-400 max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-                    >
-                      {variants.map((person) => (
-                        <Listbox.Option
-                          key={person}
-                          className={({ active }) =>
-                            clsx(
-                              active
-                                ? "text-gray-50 bg-dark-50"
-                                : "text-gray-300",
-                              "cursor-pointer select-none relative py-2 pl-3 pr-5"
-                            )
-                          }
-                          value={person}
-                        >
-                          {({ selected }) => (
-                            <>
-                              <span
-                                className={clsx(
-                                  selected
-                                    ? "font-semibold text-gray-50"
-                                    : "font-normal",
-                                  "block truncate"
-                                )}
-                              >
-                                {person}
-                              </span>
-
-                              {selected ? (
-                                <span
-                                  className={clsx(
-                                    "text-blue-600",
-                                    "absolute inset-y-0 right-0 flex items-center pr-2"
-                                  )}
-                                >
-                                  <CheckIcon
-                                    className="w-5 h-5"
-                                    aria-hidden="true"
-                                  />
-                                </span>
-                              ) : null}
-                            </>
-                          )}
-                        </Listbox.Option>
-                      ))}
-                    </Listbox.Options>
-                  </Transition>
-                </div>
-              </Listbox>
+              <Switch.Group as="div" className="flex items-center">
+                <Switch.Label
+                  as="span"
+                  className="mr-3 text-sm text-gray-200 pointer-events-none"
+                >
+                  Reverse
+                </Switch.Label>
+                <Switch
+                  checked={reversed}
+                  onChange={setReversed}
+                  className="relative inline-flex items-center justify-center flex-shrink-0 w-10 h-5 rounded-full cursor-pointer group focus:outline-none focus:ring-2 ring-offset-dark-800 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  <span className="sr-only">Use setting</span>
+                  <span
+                    aria-hidden="true"
+                    className="absolute w-full h-full rounded-md pointer-events-none bg-dark-800"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className={clsx(
+                      reversed ? "bg-blue-600" : "bg-dark-50",
+                      "pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200"
+                    )}
+                  />
+                  <span
+                    aria-hidden="true"
+                    className={clsx(
+                      reversed ? "translate-x-5" : "translate-x-0",
+                      "pointer-events-none absolute left-0 inline-block h-5 w-5 border border-gray-200 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200"
+                    )}
+                  />
+                </Switch>
+              </Switch.Group>
               <CopyToClipboard
                 text={activeCode}
                 onCopy={() => {
@@ -294,6 +248,8 @@ export default function Toggles({ code, toggle }: any) {
     </>
   )
 }
+
+Toggles.PrimaryLayout = Layout
 
 export async function getStaticProps(context: {
   params: { [x: string]: string }

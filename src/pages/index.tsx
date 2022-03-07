@@ -1,4 +1,5 @@
 import { ToggleGrid } from "../components"
+import Layout from "../layouts/main"
 import { toggles as toggleMeta } from "../toggles/data/meta"
 import { generateCode, toggles as toggleList } from "../toggles/utilities"
 
@@ -28,6 +29,8 @@ export default function Home({ toggles }: any) {
     </>
   )
 }
+
+Home.PrimaryLayout = Layout
 
 export async function getStaticProps() {
   const toggles: {

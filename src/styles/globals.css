@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+
+    .scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: #b8b8b8 transparent;
+    }
+  
+   .scrollbar::-webkit-scrollbar {
+     width: .9rem;
+   }
+   .scrollbar::-webkit-scrollbar-thumb {
+     background: content-box #e6e8ed; 
+     border-radius: 1rem;
+     border: 5px solid transparent;
+     z-index: 99;
+   }
+  
+  .dark .scrollbar::-webkit-scrollbar-thumb {
+    background: content-box #29292b; 
+  }
+   .scrollbar:hover::-webkit-scrollbar-thumb {
+    background: content-box #aeb1b8; 
+  }
+  
+  .dark .scrollbar:hover::-webkit-scrollbar-thumb {
+    background: content-box #49494d; 
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb:active {
+    background: content-box #88898f;
+  }
+  
+  .dark .scrollbar::-webkit-scrollbar-thumb:active {
+    background: content-box #65656b; 
+  }
+  
+  .scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  }
+
 * {
     transition-property: background-color, border-color, color, fill, stroke;
     transition-duration: 150ms;
