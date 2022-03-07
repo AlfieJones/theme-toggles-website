@@ -6,7 +6,7 @@ import { DocumentationProps } from "./documentation.props"
 
 const tabs = [
   { title: "HTML", key: 0, data: "/documentation" },
-  { title: "React", key: 1, data: "/settings/password" },
+  { title: "React", key: 1, data: "/documentation#test" },
 ]
 const SettingsLayout: FC<DocumentationProps> = ({
   children,
