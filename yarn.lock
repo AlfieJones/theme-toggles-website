@@ -187,6 +187,11 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.0.tgz#7f698254aadf921e48dda8c0a6b304026b8a9323"
   integrity sha512-JLo+Y592QzIE+q7Dl2pMUtt4q8SKYI5jDrZxrozEQxnGVOyYE+GWK9eLkwTaeN9DDctlaRAQ3TBmzZ1qdLE30A==
 
+"@theme-toggles/react@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@theme-toggles/react/-/react-1.5.1.tgz#f04cc966dfcc67b07ffe9574538c3ce7f019e22d"
+  integrity sha512-h44UI2M+Z8DoxA/wIvoPsd4B08XtbjHf2cwpoAHfkgAPvID9MwLwJMgHZIPVXscQ6Od8Z1hZ8vJJdDVv02bAIA==
+
 "@types/domutils@*":
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/@types/domutils/-/domutils-1.7.4.tgz#bb5f1807673e295782614b0a383b4dc1ecd2af97"

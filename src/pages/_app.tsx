@@ -1,4 +1,6 @@
 import "../styles/globals.css"
+import "@theme-toggles/react/dist/css/bundle.css"
+
 import React from "react"
 import type { AppProps } from "next/app"
 import { Layout } from "../components"
