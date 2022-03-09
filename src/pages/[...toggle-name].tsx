@@ -270,7 +270,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      code: generateCode(toggle, framework),
+      code: generateCode(toggle),
       toggle: toggleMeta,
       framework,
     },
