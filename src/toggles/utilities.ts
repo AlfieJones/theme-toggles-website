@@ -1,8 +1,8 @@
-import { ButtonHTML, ButtonJSX } from "./varients/button"
-import { CheckboxHTML, CheckboxJSX } from "./varients/checkbox"
+import { ButtonHTML, ButtonReact } from "./varients/button"
+import { CheckboxHTML } from "./varients/checkbox"
 import prettier from "prettier/standalone"
 import parser from "prettier/parser-typescript"
-import { DivHTML, DivJSX } from "./varients/div"
+import { DivHTML } from "./varients/div"
 
 function importToggles(r: any) {
   return r.keys().map((fileName: string) => {
@@ -54,7 +54,20 @@ function serialize(component: any) {
   return code
 }
 
-export function generateCode(toggle: any) {
+export interface CodeType {
+  name: string
+  code: string
+}
+
+export interface CodeCollectionType {
+  display: string
+  variants: CodeType[]
+}
+
+export function generateCode(
+  toggle: any,
+  framework: "html" | "react"
+): CodeCollectionType {
   const jsxBasic = serialize(toggle.svg)
   const htmlBasic = jsxBasic
     .replace(/className=/g, "class=")
@@ -72,27 +85,9 @@ export function generateCode(toggle: any) {
     .replace(/view-box=/g, "viewBox=")
     .replace(/path-length=/g, "pathLength=")
 
-  return {
-    button: {
-      html: prettier
-        .format(ButtonHTML(htmlBasic), {
-          semi: false,
-          parser: "typescript",
-          plugins: [parser],
-        })
-        .replace(";", "")
-        .replace(/[\r\n]+$/, ""),
-      jsx: prettier
-        .format(ButtonJSX(jsxBasic), {
-          semi: false,
-          parser: "typescript",
-          plugins: [parser],
-        })
-        .replace(";", "")
-        .replace(/[\r\n]+$/, ""),
-    },
-    checkbox: {
-      html: prettier
+  if (framework === "react")
+    return {
+      display: prettier
         .format(CheckboxHTML(htmlBasic), {
           semi: false,
           parser: "typescript",
@@ -100,32 +95,64 @@ export function generateCode(toggle: any) {
         })
         .replace(";", "")
         .replace(/[\r\n]+$/, ""),
-      jsx: prettier
-        .format(CheckboxJSX(jsxBasic), {
-          semi: false,
-          parser: "typescript",
-          plugins: [parser],
-        })
-        .replace(";", "")
-        .replace(/[\r\n]+$/, ""),
-    },
-    div: {
-      html: prettier
-        .format(DivHTML(htmlBasic), {
-          semi: false,
-          parser: "typescript",
-          plugins: [parser],
-        })
-        .replace(";", "")
-        .replace(/[\r\n]+$/, ""),
-      jsx: prettier
-        .format(DivJSX(jsxBasic), {
-          semi: false,
-          parser: "typescript",
-          plugins: [parser],
-        })
-        .replace(";", "")
-        .replace(/[\r\n]+$/, ""),
-    },
+      variants: [
+        {
+          name: "button",
+          code: prettier
+            .format(ButtonReact(toggle.name), {
+              semi: false,
+              parser: "typescript",
+              plugins: [parser],
+            })
+            .replace(";", "")
+            .replace(/[\r\n]+$/, ""),
+        },
+      ],
+    }
+
+  return {
+    display: prettier
+      .format(CheckboxHTML(htmlBasic), {
+        semi: false,
+        parser: "typescript",
+        plugins: [parser],
+      })
+      .replace(";", "")
+      .replace(/[\r\n]+$/, ""),
+    variants: [
+      {
+        name: "button",
+        code: prettier
+          .format(ButtonHTML(htmlBasic), {
+            semi: false,
+            parser: "typescript",
+            plugins: [parser],
+          })
+          .replace(";", "")
+          .replace(/[\r\n]+$/, ""),
+      },
+      {
+        name: "div",
+        code: prettier
+          .format(DivHTML(htmlBasic), {
+            semi: false,
+            parser: "typescript",
+            plugins: [parser],
+          })
+          .replace(";", "")
+          .replace(/[\r\n]+$/, ""),
+      },
+      {
+        name: "checkbox",
+        code: prettier
+          .format(CheckboxHTML(htmlBasic), {
+            semi: false,
+            parser: "typescript",
+            plugins: [parser],
+          })
+          .replace(";", "")
+          .replace(/[\r\n]+$/, ""),
+      },
+    ],
   }
 }

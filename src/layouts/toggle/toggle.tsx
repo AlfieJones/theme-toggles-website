@@ -24,7 +24,7 @@ const ToggleLayout: FC<ToggleLayoutProps> = ({
       <p className="mt-4 mb-5 ml-4 text-2xl text-zinc-500 dark:text-zinc-400">
         {toggle?.description}
       </p>
-      <Tabs tabs={tabs} base={toggle?.name.toLowerCase()} />
+      <Tabs tabs={tabs} base={toggle?.svg.toLowerCase()} />
       <div className="-mt-12">{children}</div>
     </ToggleContext.Provider>
   )

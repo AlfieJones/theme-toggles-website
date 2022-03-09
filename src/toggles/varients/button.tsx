@@ -1,7 +1,5 @@
-export const ButtonJSX = (svg: string) => {
-  return `<button className="theme-toggle" type="button" aria-label="Toggle theme">
-            ${svg}
-        </button>`
+export const ButtonReact = (name: string) => {
+  return `<${name} duration={750} />`
 }
 
 export const ButtonHTML = (svg: string) => {

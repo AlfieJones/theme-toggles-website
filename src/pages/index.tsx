@@ -43,8 +43,9 @@ export async function getStaticProps() {
   }[] = toggleMeta
   toggles.forEach((t) => {
     t.code = generateCode(
-      toggleList.find((i: any) => i.name === t.svg)
-    ).checkbox.html
+      toggleList.find((i: any) => i.name === t.svg),
+      "html"
+    ).display
   })
 
   return {

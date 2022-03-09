@@ -19,8 +19,7 @@ import Layout from "../layouts/main"
 import { useTheme } from "next-use-theme"
 import ToggleLayout, { ToggleContext } from "../layouts/toggle/toggle"
 import { GetStaticPaths, GetStaticProps } from "next"
-
-const variants = ["Button", "Checkbox", "Div"]
+import { Toggle } from "../layouts/toggle/toggle.props"
 
 SyntaxHighlighter.registerLanguage("jsx", jsx)
 
@@ -71,10 +70,10 @@ function transformFn(node: any) {
   }
 }
 
-const Toggles = ({ code, toggle, framework }: any) => {
+const Toggles = ({ code, toggle }: any) => {
   const [reversed, setReversed] = useState(false)
-  const [selected, setSelected] = useState(variants[0])
-  const [activeCode, setActiveCode] = useState(code.button.html)
+
+  const [selected, setSelected] = useState(code.variants[0])
 
   const setToggle = useContext(ToggleContext)
 
@@ -86,30 +85,14 @@ const Toggles = ({ code, toggle, framework }: any) => {
 
   const { theme } = useTheme()
 
-  useEffect(() => {
-    let container
-    switch (selected) {
-      case "Button":
-        container = code.button
-        break
-      case "Checkbox":
-        container = code.checkbox
-        break
-      case "Div":
-        container = code.div
-        break
-      default:
-        container = code.button
-    }
-    setActiveCode(container.html)
-  }, [selected, code])
+  console.log(code.variants)
 
   return (
     <>
       <div className="flex flex-col items-center mt-12 md:items-start md:mt-24 md:flex-row">
         <div className="h-full px-6 mb-6 lg:px-12 md:mb-0 ">
           <div className="p-6 first-line:rounded-md ">
-            {ReactHtmlParser(code.checkbox.html, {
+            {ReactHtmlParser(code.display, {
               preprocessNodes: preprocessNodes(toggle.classesToggle),
               transform: transformFn,
             })}
@@ -118,19 +101,23 @@ const Toggles = ({ code, toggle, framework }: any) => {
         <div className="w-full p-2 overflow-x-hidden rounded-md bg-zinc-50 dark:bg-dark-800">
           <div className="flex flex-wrap-reverse mx-2 overflow-auto border-b dark:border-dark-50 border-zinc-300">
             <div className="flex pr-16 space-x-2" aria-label="Wrapper">
-              {variants.map((tab) => (
+              {code.variants.map((variant: any) => (
                 <button
-                  key={tab}
+                  key={variant.name}
                   type="button"
-                  onClick={() => setSelected(tab)}
+                  onClick={() =>
+                    setSelected(
+                      code.variants.find((i: any) => i.name === variant.name)
+                    )
+                  }
                   className={clsx(
-                    selected === tab
+                    selected.name === variant.name
                       ? "dark:border-blue-500 dark:text-blue-500 border-blue-600 text-blue-600"
                       : "border-transparent text-zinc-400 dark:hover:text-zinc-200 hover:text-zinc-600 hover:border-zinc-300",
                     "whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm"
                   )}
                 >
-                  {tab}
+                  {variant.name}
                 </button>
               ))}
             </div>
@@ -169,7 +156,7 @@ const Toggles = ({ code, toggle, framework }: any) => {
                 </Switch>
               </Switch.Group>
               <CopyToClipboard
-                text={activeCode}
+                text={selected.code}
                 onCopy={() => {
                   setShow(true)
                   setTimeout(() => setShow(false), 4000)
@@ -196,7 +183,7 @@ const Toggles = ({ code, toggle, framework }: any) => {
                   background: "inherit",
                 }}
               >
-                {activeCode}
+                {selected.code}
               </SyntaxHighlighter>
             )}
           </div>
@@ -262,17 +249,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
     (t) => t.svg === context.params["toggle-name"][0]
   )
   const toggle = toggles.find(
-    (toggle: { name: string }) => toggle.name === toggleMeta?.svg
+    (toggle: Toggle) => toggle.name === toggleMeta?.svg
   )
 
   // @ts-ignore
-  const framework = context.params["toggle-name"][1] || ""
+  const framework = context.params["toggle-name"][1] || "html"
 
   return {
     props: {
-      code: generateCode(toggle),
+      code: generateCode(toggle, framework as any),
       toggle: toggleMeta,
-      framework,
     },
   }
 }
