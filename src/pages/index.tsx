@@ -14,9 +14,9 @@ export default function Home({ toggles }: any) {
           <span className="block">was never easier</span>
         </h1>
         <p className="max-w-md mx-auto mt-5 text-base text-gray-500 dark:text-gray-200 sm:text-lg md:mt-7 md:text-xl md:max-w-3xl">
-          Theme toggles is a collection of awesome easy to use, animated
+          Theme toggles is a collection of awesome, easy to use, animated
           toggles; designed for switching between light and dark modes.
-          It&apos;s a highly customisable and modular library which aims to
+          It&apos;s a highly customizable and modular library which aims to
           provide an unopinionated design. Even works great with Tailwind CSS.
         </p>
       </div>

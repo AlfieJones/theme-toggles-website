@@ -1,5 +1,3 @@
-import Head from "next/head"
-import Image from "next/image"
 import SettingsLayout from "../layouts/documentation"
 import Layout from "../layouts/main"
 import getMainLayout from "../layouts/main"

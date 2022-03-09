@@ -1,6 +1,5 @@
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter"
 import clsx from "clsx"
-
 import {
   coldarkDark,
   coldarkCold,
@@ -9,17 +8,17 @@ import {
 // @ts-ignore
 import jsx from "./../../node_modules/react-syntax-highlighter/dist/esm/languages/prism/jsx"
 import { generateCode, toggles } from "../toggles/utilities"
-import React, { Fragment, useEffect, useState } from "react"
+import React, { Fragment, useContext, useEffect, useState } from "react"
 import ReactHtmlParser, { convertNodeToElement } from "react-html-parser"
 import { CheckCircleIcon, XIcon } from "@heroicons/react/solid"
 import { ClipboardCopyIcon } from "@heroicons/react/solid"
-import { Listbox, Switch, Transition } from "@headlessui/react"
+import { Switch, Transition } from "@headlessui/react"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { toggles as togglesMeta } from "../toggles/data/meta"
 import Layout from "../layouts/main"
 import { useTheme } from "next-use-theme"
-
-const tabs = ["HTML", "JSX"]
+import ToggleLayout, { ToggleContext } from "../layouts/toggle/toggle"
+import { GetStaticPaths, GetStaticProps } from "next"
 
 const variants = ["Button", "Checkbox", "Div"]
 
@@ -72,10 +71,16 @@ function transformFn(node: any) {
   }
 }
 
-export default function Toggles({ code, toggle }: any) {
+const Toggles = ({ code, toggle, framework }: any) => {
   const [reversed, setReversed] = useState(false)
   const [selected, setSelected] = useState(variants[0])
   const [activeCode, setActiveCode] = useState(code.button.html)
+
+  const setToggle = useContext(ToggleContext)
+
+  useEffect(() => {
+    setToggle && setToggle(toggle)
+  }, [setToggle, toggle])
 
   const [show, setShow] = useState(false)
 
@@ -101,12 +106,6 @@ export default function Toggles({ code, toggle }: any) {
 
   return (
     <>
-      <h1 className="ml-4 text-6xl font-bold text-zinc-700 dark:text-white">
-        {toggle.name}
-      </h1>
-      <p className="mt-4 ml-4 text-2xl text-zinc-500 dark:text-zinc-400">
-        {toggle.description}
-      </p>
       <div className="flex flex-col items-center mt-12 md:items-start md:mt-24 md:flex-row">
         <div className="h-full px-6 mb-6 lg:px-12 md:mb-0 ">
           <div className="p-6 first-line:rounded-md ">
@@ -118,7 +117,7 @@ export default function Toggles({ code, toggle }: any) {
         </div>
         <div className="w-full p-2 overflow-x-hidden rounded-md bg-zinc-50 dark:bg-dark-800">
           <div className="flex flex-wrap-reverse mx-2 overflow-auto border-b dark:border-dark-50 border-zinc-300">
-            <nav className="flex pr-16 space-x-2" aria-label="Tabs">
+            <div className="flex pr-16 space-x-2" aria-label="Wrapper">
               {variants.map((tab) => (
                 <button
                   key={tab}
@@ -134,7 +133,7 @@ export default function Toggles({ code, toggle }: any) {
                   {tab}
                 </button>
               ))}
-            </nav>
+            </div>
             <div className="flex ml-auto">
               <Switch.Group as="div" className="flex items-center">
                 <Switch.Label
@@ -255,28 +254,56 @@ export default function Toggles({ code, toggle }: any) {
 }
 
 Toggles.PrimaryLayout = Layout
+Toggles.SecondaryLayout = ToggleLayout
 
-export async function getStaticProps(context: {
-  params: { [x: string]: string }
-}) {
+export const getStaticProps: GetStaticProps = async (context) => {
   const toggleMeta = togglesMeta.find(
-    (t) => t.svg === context.params["toggle-name"]
+    //@ts-ignore
+    (t) => t.svg === context.params["toggle-name"][0]
   )
   const toggle = toggles.find(
     (toggle: { name: string }) => toggle.name === toggleMeta?.svg
   )
+
+  // @ts-ignore
+  const framework = context.params["toggle-name"][1] || ""
+
   return {
     props: {
-      code: generateCode(toggle),
+      code: generateCode(toggle, framework),
       toggle: toggleMeta,
+      framework,
     },
   }
 }
 
-export async function getStaticPaths() {
-  const result = togglesMeta.map((t) => ({ params: { "toggle-name": t.svg } }))
+export const getStaticPaths: GetStaticPaths = async () => {
+  const results = togglesMeta.reduce((prev: any[], curr) => {
+    const value = [
+      {
+        params: {
+          "toggle-name": [curr.svg, ""],
+        },
+      },
+      {
+        params: {
+          "toggle-name": [curr.svg, "react"],
+        },
+      },
+      {
+        params: {
+          "toggle-name": [curr.svg, "html"],
+        },
+      },
+    ]
+    prev.push(...value)
+    return prev
+  }, [])
+
   return {
-    paths: result,
+    paths: results,
     fallback: false, // See the "fallback" section below
   }
 }
+
+export default Toggles
