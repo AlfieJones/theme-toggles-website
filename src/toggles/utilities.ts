@@ -124,7 +124,7 @@ export function generateCode(
             .replace(";", "")
             .replace(/[\r\n]+$/, ""),
           reversed: prettier
-            .format(ButtonReact(toggle.name), {
+            .format(ButtonReact(toggle.name.concat("Reversed")), {
               semi: false,
               parser: "typescript",
               plugins: [parser],
