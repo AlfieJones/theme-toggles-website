@@ -1,5 +1,7 @@
 import Layout from "../../layouts/main"
 import { Image } from "../../components"
+import clsx from "clsx"
+import Link from "next/link"
 
 const actions = [
   {
@@ -7,35 +9,36 @@ const actions = [
     href: "documentation/html",
     icon: "logos/html.svg",
     alt: "Html logo",
-    iconForeground: "text-teal-700",
-    iconBackground: "bg-teal-50",
+    shadow: "shadow-orange-500/50",
   },
   {
     title: "React",
     href: "documentation/react",
     icon: "logos/react.svg",
-    iconForeground: "text-purple-700",
-    iconBackground: "bg-purple-50",
+    shadow: "shadow-cyan-500/50",
   },
 ]
 
 export default function Documentation() {
   return (
-    <div className="justify-center divide-y-8 divide-gray-200 rounded-lg dark:divide-dark-900 xs:divide-y-0 xs:grid xs:grid-cols-2 md:grid-cols-3 xs:gap-5">
+    <div className="justify-center divide-white dark:divide-dark-900 xs:divide-y-0 xs:grid xs:grid-cols-2 md:grid-cols-3 xs:gap-5">
       {actions.map((action) => (
         <div
           key={action.title}
-          className={
-            "rounded-lg hover:scale-105 transition-transform col-span-1 w-full relative group bg-white dark:bg-dark-500 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
-          }
+          className={clsx(
+            "rounded-lg mt-5 hover:scale-105 transition-transform shadow col-span-1 w-full relative group bg-white dark:bg-dark-500 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500",
+            action.shadow
+          )}
         >
           <div>
-            <h3 className="text-lg font-medium md:text-2xl">
-              <a href={action.href} className="focus:outline-none">
-                {/* Extend touch target to entire panel */}
-                <span className="absolute inset-0" aria-hidden="true" />
-                {action.title}
-              </a>
+            <h3 className="text-lg font-medium md:text-2xl text-zinc-800 dark:text-white">
+              <Link href={action.href}>
+                <a className="focus:outline-none">
+                  {/* Extend touch target to entire panel */}
+                  <span className="absolute inset-0 z-10" aria-hidden="true" />
+                  {action.title}
+                </a>
+              </Link>
             </h3>
           </div>
           <div className="flex content-center justify-center">

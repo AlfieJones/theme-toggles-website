@@ -10,4 +10,5 @@ export interface Tab {
 export interface TabProps extends HTMLAttributes<HTMLDivElement> {
   tabs: Tab[]
   base?: string
+  concatBase?: boolean
 }
