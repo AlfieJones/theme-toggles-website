@@ -84,6 +84,10 @@ const Toggles = ({ code, toggle }: any) => {
   const setToggle = useContext(ToggleContext)
 
   useEffect(() => {
+    setSelected(code.variants[0])
+  }, [code.variants])
+
+  useEffect(() => {
     setToggle && setToggle(toggle)
   }, [setToggle, toggle])
 
