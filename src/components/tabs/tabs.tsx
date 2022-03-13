@@ -4,11 +4,13 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { TabProps } from "./tabs.props"
 
-const Tabs: FC<TabProps> = ({ tabs, base }: TabProps) => {
+const Tabs: FC<TabProps> = ({ tabs, base, className, ...rest }: TabProps) => {
   const router = useRouter()
-  console.log(router.asPath)
   return (
-    <div className="pb-5 overflow-x-auto scrollbar">
+    <div
+      className={clsx("pb-5 overflow-x-auto scrollbar", className)}
+      {...rest}
+    >
       <nav className="flex space-x-5 border-b border-gray-200 dark:border-dark-50">
         {tabs.map((tab) => (
           <Link href={`${base}${tab.pathname}`} key={tab.title} replace>

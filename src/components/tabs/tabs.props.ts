@@ -1,3 +1,5 @@
+import { HTMLAttributes } from "react"
+
 export interface Tab {
   title: string
   pathname: string
@@ -5,7 +7,7 @@ export interface Tab {
   default: boolean
 }
 
-export interface TabProps {
+export interface TabProps extends HTMLAttributes<HTMLDivElement> {
   tabs: Tab[]
   base?: string
 }
