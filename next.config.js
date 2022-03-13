@@ -7,7 +7,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   images: {
-    disableStaticImages: true,
+    loader: "custom",
   },
   webpack(config, options) {
     config.module.rules.push({
