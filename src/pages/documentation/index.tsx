@@ -9,13 +9,13 @@ const actions = [
     href: "documentation/html",
     icon: "logos/html.svg",
     alt: "Html logo",
-    shadow: "shadow-orange-500/50",
+    shadow: "shadow-orange-500/50 dark:shadow-orange-400/50",
   },
   {
     title: "React",
     href: "documentation/react",
     icon: "logos/react.svg",
-    shadow: "shadow-cyan-500/50",
+    shadow: "shadow-cyan-500/50 dark:shadow-cyan-400/50",
   },
 ]
 
@@ -26,7 +26,7 @@ export default function Documentation() {
         <div
           key={action.title}
           className={clsx(
-            "rounded-lg mt-5 hover:scale-105 transition-transform shadow col-span-1 w-full relative group bg-white dark:bg-dark-800 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500",
+            "rounded-lg mt-5 hover:scale-105 transition-transform shadow col-span-1 w-full relative group bg-white dark:bg-dark-850 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500",
             action.shadow
           )}
         >
