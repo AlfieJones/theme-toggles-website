@@ -26,7 +26,7 @@ export default function Documentation() {
         <div
           key={action.title}
           className={clsx(
-            "rounded-lg mt-5 hover:scale-105 transition-transform shadow col-span-1 w-full relative group bg-white dark:bg-dark-500 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500",
+            "rounded-lg mt-5 hover:scale-105 transition-transform shadow col-span-1 w-full relative group bg-white dark:bg-dark-800 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500",
             action.shadow
           )}
         >
