@@ -45,7 +45,7 @@ export async function getStaticProps() {
     t.code = generateCode(
       toggleList.find((i: any) => i.name === t.svg),
       "html"
-    ).display
+    ).display.code
   })
 
   return {

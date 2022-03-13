@@ -8,7 +8,13 @@ import {
 // @ts-ignore
 import jsx from "./../../node_modules/react-syntax-highlighter/dist/esm/languages/prism/jsx"
 import { generateCode, toggles } from "../toggles/utilities"
-import React, { Fragment, useContext, useEffect, useState } from "react"
+import React, {
+  Fragment,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react"
 import ReactHtmlParser, { convertNodeToElement } from "react-html-parser"
 import { CheckCircleIcon, XIcon } from "@heroicons/react/solid"
 import { ClipboardCopyIcon } from "@heroicons/react/solid"
@@ -85,41 +91,55 @@ const Toggles = ({ code, toggle }: any) => {
 
   const { theme } = useTheme()
 
-  console.log(code.variants)
+  const display = useMemo(
+    () =>
+      ReactHtmlParser(code.display.code, {
+        preprocessNodes: preprocessNodes(toggle.classesToggle),
+        transform: transformFn,
+      }),
+    [code.display.code, toggle.classesToggle]
+  )
+
+  const displayReversed = useMemo(
+    () =>
+      ReactHtmlParser(code.display.reversed, {
+        preprocessNodes: preprocessNodes(toggle.classesToggle),
+        transform: transformFn,
+      }),
+    [code.display.reversed, toggle.classesToggle]
+  )
 
   return (
     <>
       <div className="flex flex-col items-center mt-12 md:items-start md:mt-24 md:flex-row">
         <div className="h-full px-6 mb-6 lg:px-12 md:mb-0 ">
           <div className="p-6 first-line:rounded-md ">
-            {ReactHtmlParser(code.display, {
-              preprocessNodes: preprocessNodes(toggle.classesToggle),
-              transform: transformFn,
-            })}
+            {reversed ? displayReversed : display}
           </div>
         </div>
         <div className="w-full p-2 overflow-x-hidden rounded-md bg-zinc-50 dark:bg-dark-800">
           <div className="flex flex-wrap-reverse mx-2 overflow-auto border-b dark:border-dark-50 border-zinc-300">
             <div className="flex pr-16 space-x-2" aria-label="Wrapper">
-              {code.variants.map((variant: any) => (
-                <button
-                  key={variant.name}
-                  type="button"
-                  onClick={() =>
-                    setSelected(
-                      code.variants.find((i: any) => i.name === variant.name)
-                    )
-                  }
-                  className={clsx(
-                    selected.name === variant.name
-                      ? "dark:border-blue-500 dark:text-blue-500 border-blue-600 text-blue-600"
-                      : "border-transparent text-zinc-400 dark:hover:text-zinc-200 hover:text-zinc-600 hover:border-zinc-300",
-                    "whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm"
-                  )}
-                >
-                  {variant.name}
-                </button>
-              ))}
+              {code.variants.length > 1 &&
+                code.variants.map((variant: any) => (
+                  <button
+                    key={variant.name}
+                    type="button"
+                    onClick={() =>
+                      setSelected(
+                        code.variants.find((i: any) => i.name === variant.name)
+                      )
+                    }
+                    className={clsx(
+                      selected.name === variant.name
+                        ? "dark:border-blue-500 dark:text-blue-500 border-blue-600 text-blue-600"
+                        : "border-transparent text-zinc-400 dark:hover:text-zinc-200 hover:text-zinc-600 hover:border-zinc-300",
+                      "whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm"
+                    )}
+                  >
+                    {variant.name}
+                  </button>
+                ))}
             </div>
             <div className="flex ml-auto">
               <Switch.Group as="div" className="flex items-center">
@@ -164,7 +184,7 @@ const Toggles = ({ code, toggle }: any) => {
               >
                 <button type="button" className="ml-5 mr-2">
                   <ClipboardCopyIcon
-                    className="w-5 h-5 dark:text-white text-zinc-500"
+                    className="w-6 h-6 my-2 dark:text-white text-zinc-500"
                     aria-hidden="true"
                   />
                 </button>
@@ -183,7 +203,7 @@ const Toggles = ({ code, toggle }: any) => {
                   background: "inherit",
                 }}
               >
-                {selected.code}
+                {reversed ? selected.reversed : selected.code}
               </SyntaxHighlighter>
             )}
           </div>

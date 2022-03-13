@@ -57,10 +57,16 @@ function serialize(component: any) {
 export interface CodeType {
   name: string
   code: string
+  reversed: string
+}
+
+export interface DisplayType {
+  code: string
+  reversed: string
 }
 
 export interface CodeCollectionType {
-  display: string
+  display: DisplayType
   variants: CodeType[]
 }
 
@@ -87,14 +93,25 @@ export function generateCode(
 
   if (framework === "react")
     return {
-      display: prettier
-        .format(CheckboxHTML(htmlBasic), {
-          semi: false,
-          parser: "typescript",
-          plugins: [parser],
-        })
-        .replace(";", "")
-        .replace(/[\r\n]+$/, ""),
+      display: {
+        reversed: prettier
+          .format(CheckboxHTML(htmlBasic), {
+            semi: false,
+            parser: "typescript",
+            plugins: [parser],
+          })
+          .replace(";", "")
+          .replace(/[\r\n]+$/, "")
+          .replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"'),
+        code: prettier
+          .format(CheckboxHTML(htmlBasic), {
+            semi: false,
+            parser: "typescript",
+            plugins: [parser],
+          })
+          .replace(";", "")
+          .replace(/[\r\n]+$/, ""),
+      },
       variants: [
         {
           name: "button",
@@ -106,19 +123,39 @@ export function generateCode(
             })
             .replace(";", "")
             .replace(/[\r\n]+$/, ""),
+          reversed: prettier
+            .format(ButtonReact(toggle.name), {
+              semi: false,
+              parser: "typescript",
+              plugins: [parser],
+            })
+            .replace(";", "")
+            .replace(/[\r\n]+$/, "")
+            .replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"'),
         },
       ],
     }
 
   return {
-    display: prettier
-      .format(CheckboxHTML(htmlBasic), {
-        semi: false,
-        parser: "typescript",
-        plugins: [parser],
-      })
-      .replace(";", "")
-      .replace(/[\r\n]+$/, ""),
+    display: {
+      reversed: prettier
+        .format(CheckboxHTML(htmlBasic), {
+          semi: false,
+          parser: "typescript",
+          plugins: [parser],
+        })
+        .replace(";", "")
+        .replace(/[\r\n]+$/, "")
+        .replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"'),
+      code: prettier
+        .format(CheckboxHTML(htmlBasic), {
+          semi: false,
+          parser: "typescript",
+          plugins: [parser],
+        })
+        .replace(";", "")
+        .replace(/[\r\n]+$/, ""),
+    },
     variants: [
       {
         name: "button",
@@ -130,6 +167,15 @@ export function generateCode(
           })
           .replace(";", "")
           .replace(/[\r\n]+$/, ""),
+        reversed: prettier
+          .format(ButtonHTML(htmlBasic), {
+            semi: false,
+            parser: "typescript",
+            plugins: [parser],
+          })
+          .replace(";", "")
+          .replace(/[\r\n]+$/, "")
+          .replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"'),
       },
       {
         name: "div",
@@ -141,6 +187,15 @@ export function generateCode(
           })
           .replace(";", "")
           .replace(/[\r\n]+$/, ""),
+        reversed: prettier
+          .format(DivHTML(htmlBasic), {
+            semi: false,
+            parser: "typescript",
+            plugins: [parser],
+          })
+          .replace(";", "")
+          .replace(/[\r\n]+$/, "")
+          .replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"'),
       },
       {
         name: "checkbox",
@@ -152,6 +207,15 @@ export function generateCode(
           })
           .replace(";", "")
           .replace(/[\r\n]+$/, ""),
+        reversed: prettier
+          .format(CheckboxHTML(htmlBasic), {
+            semi: false,
+            parser: "typescript",
+            plugins: [parser],
+          })
+          .replace(";", "")
+          .replace(/[\r\n]+$/, "")
+          .replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"'),
       },
     ],
   }
