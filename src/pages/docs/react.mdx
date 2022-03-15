@@ -15,18 +15,28 @@ npm install @theme-toggles/react
 2. Import css into app.js or equivalent
 ```js
 // app.js or equivalent
-import "@theme-toggles/react/dist/css/{toggle name}.css"
+import "@theme-toggles/react/dist/css/[toggle name].css"
 ```
 > Note: You can import all css using bundle.css but this isn't recommended unless all toggles are being used, this will include unused css. 
 
-3. Import and use the component
+3. Import and use the component, so the classic toggle would look like
 ```js
 import { Classic } from "@theme-toggles/react"
 
 <Classic />
 ```
+### Reversed
+All the toggles are reversible by using the Reversed component
+```js
+// app.js or equivalent
+import "@theme-toggles/react/dist/css/ClassicReversed.css"
+```
+```js
+import { ClassicReversed } from "@theme-toggles/react"
 
-
+<ClassicReversed />
+```
 
 export default ({ children }) => <Layout><SettingsLayout>{children}</SettingsLayout></Layout>
 
+## Props
