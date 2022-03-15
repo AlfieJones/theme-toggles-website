@@ -31,13 +31,15 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                   >
                     <div className="flex items-center flex-1 xs:absolute xs:inset-y-0 xs:left-0">
                       <div className="flex items-center justify-between w-full h-8 xs:w-auto">
-                        {typeof window !== "undefined" && (
-                          <InnerMoon
-                            className="text-3xl text-zinc-700 dark:text-zinc-300"
-                            toggled={theme === "dark"}
-                            onToggle={toggle}
-                          />
-                        )}
+                        <div className="flex items-center">
+                          {typeof window !== "undefined" && (
+                            <InnerMoon
+                              className="text-3xl text-zinc-700 dark:text-zinc-300"
+                              toggled={theme === "dark"}
+                              onToggle={toggle}
+                            />
+                          )}
+                        </div>
                         <div className="flex items-center -mr-2 xs:hidden">
                           <Popover.Button className="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 dark:text-zinc-300 dark:hover:text-zinc-200 hover:text-zinc-500 dark:hover:bg-dark-800 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                             <span className="sr-only">Open main menu</span>
