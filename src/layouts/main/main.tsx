@@ -9,13 +9,21 @@ import { useTheme } from "next-use-theme"
 import { InnerMoon } from "@theme-toggles/react"
 
 const navigation = [
-  { name: "Toggles", href: "/" },
-  { name: "Documentation", href: "/docs" },
+  { name: "Toggles", href: "/" , matchAfter: false },
+  { name: "Documentation", href: "/docs", matchAfter: true },
 ]
 
 const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const router = useRouter()
   const { toggle, theme } = useTheme()
+
+  const matches = (nav: typeof navigation[0]) => {
+    if(nav.matchAfter){
+      return router.asPath.startsWith(nav.href);
+    } else {
+      return nav.href === router.asPath;
+    }
+  }
 
   return (
     <>
@@ -53,10 +61,10 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                         <Link key={item.name} href={item.href}>
                           <a
                             className={clsx(
-                              "font-medium  hover:text-zinc-900 dark:hover:text-white transition-colors",
-                              router.pathname === item.href
+                              "font-medium hover:text-zinc-900 dark:hover:text-white transition-colors",
+                              matches(item)
                                 ? "text-zinc-900 dark:text-white"
-                                : "text-zinc-500 dark:text-zinc-300"
+                                : "text-zinc-500 dark:text-zinc-400"
                             )}
                           >
                             {item.name}
@@ -131,18 +139,19 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                       </div>
                       <div className="px-2 pt-2 pb-3">
                         {navigation.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className={clsx(
-                              "block px-3 py-2 rounded-md text-base font-medium hover:text-zinc-900 hover:bg-zinc-50 dark:hover:bg-dark-700",
-                              router.pathname === item.href
-                                ? "text-zinc-900 dark:text-zinc-100"
-                                : "text-zinc-500 dark:text-zinc-400"
-                            )}
-                          >
-                            {item.name}
-                          </a>
+                          <Link href={item.href} >
+                            <a
+                              key={item.name} 
+                              className={clsx(
+                                "block px-3 py-2 rounded-md text-base font-medium hover:text-zinc-900 hover:bg-zinc-50 dark:hover:bg-dark-700",
+                                matches(item)
+                                  ? "text-zinc-900 dark:text-blue-100"
+                                  : "text-zinc-500 dark:text-zinc-500"
+                              )}
+                            >
+                              {item.name}
+                            </a>
+                          </Link>
                         ))}
                       </div>
                     </div>

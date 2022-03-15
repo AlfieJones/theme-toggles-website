@@ -59,7 +59,7 @@ const ToggleGrid: FC<{ toggles: any }> = ({ toggles }: any) => {
       {toggles.map((item: any) => (
         <li
           key={item.name}
-          className="relative w-full max-w-[17rem] rounded-md hover:scale-105 transition-transform shadow-md dark:shadow-lg-strong"
+          className="relative w-full max-w-[17rem] rounded-md hover:scale-105 transition-transform shadow-md dark:shadow-lg-strong dark:bg-dark-850 "
         >
           <div className={clsx("rounded-t-md ", item.classesGrid)}>
             {ReactHtmlParser(item.code, {
@@ -69,7 +69,7 @@ const ToggleGrid: FC<{ toggles: any }> = ({ toggles }: any) => {
           </div>
           <Link href={`/${item.svg}`}>
             <a>
-              <div className="p-2 dark:bg-dark-850 rounded-b-md">
+              <div className="p-2 rounded-b-md">
                 <h3 className="block text-xl font-bold text-gray-700 truncate dark:text-gray-100">
                   {item.name}
                 </h3>

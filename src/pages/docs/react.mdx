@@ -3,13 +3,30 @@ import Layout from "../../layouts/main"
 import { H1 } from "../../components/mdx"
 
 # React Component
-The offical react component library for our toggles built from the HTML package
+The official react component library for our toggles built from the HTML package
 
-## Installation
-
+## Usage
+1. Install
 ```bash
 yarn add @theme-toggles/react
+# or
+npm install @theme-toggles/react
 ```
+2. Import css into app.js or equivalent
+```js
+// app.js or equivalent
+import "@theme-toggles/react/dist/css/{toggle name}.css"
+```
+> Note: You can import all css using bundle.css but this isn't recommended unless all toggles are being used, this will include unused css. 
+
+3. Import and use the component
+```js
+import { Classic } from "@theme-toggles/react"
+
+<Classic />
+```
+
+
 
 export default ({ children }) => <Layout><SettingsLayout>{children}</SettingsLayout></Layout>
 
