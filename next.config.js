@@ -4,8 +4,17 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: false,
 })
 
-module.exports = withBundleAnalyzer({
+const withPlugins = require("next-compose-plugins")
+
+const withMDX = require("@next/mdx")({
+  options: {
+    providerImportSource: "@mdx-js/react",
+  },
+})
+
+module.exports = withPlugins([withBundleAnalyzer, withMDX], {
   reactStrictMode: true,
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   images: {
     loader: "custom",
   },

@@ -10,7 +10,7 @@ import { InnerMoon } from "@theme-toggles/react"
 
 const navigation = [
   { name: "Toggles", href: "/" },
-  { name: "Documentation", href: "/documentation" },
+  { name: "Documentation", href: "/docs" },
 ]
 
 const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
@@ -150,7 +150,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
             )}
           </Popover>
 
-          <main className="px-4 mx-auto mt-12 sm:mt-24 max-w-7xl ">
+          <main className="px-4 mx-auto mt-6 sm:mt-12 max-w-7xl ">
             {children}
           </main>
         </div>

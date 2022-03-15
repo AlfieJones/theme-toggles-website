@@ -12,8 +12,11 @@ const SettingsLayout: FC<DocumentationProps> = ({
 }: DocumentationProps) => {
   return (
     <>
-      <Tabs tabs={tabs} base="/documentation" concatBase />
-      <div className="mt-5">{children}</div>
+      <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+        Framework
+      </h3>
+      <Tabs tabs={tabs} base="/docs" concatBase />
+      <div className="-mt-10">{children}</div>
     </>
   )
 }

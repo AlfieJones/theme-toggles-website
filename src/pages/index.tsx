@@ -6,7 +6,7 @@ import { generateCode, toggles as toggleList } from "../toggles/utilities"
 export default function Home({ toggles }: any) {
   return (
     <>
-      <div className="text-center">
+      <div className="pt-12 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-gray-700 2xs:text-5xl dark:text-white md:text-6xl lg:text-7xl">
           <span className="bg-gradient-to-r text-transparent bg-clip-text from-blue-600 to-[#3eadcf] block pb-1 sm:pb-2 md:pb-3">
             Implementing theme toggles

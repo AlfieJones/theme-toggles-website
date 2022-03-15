@@ -6,14 +6,14 @@ import Link from "next/link"
 const actions = [
   {
     title: "HTML",
-    href: "documentation/html",
+    href: "docs/html",
     icon: "logos/html.svg",
     alt: "Html logo",
     shadow: "shadow-orange-500/50 dark:shadow-orange-400/50",
   },
   {
     title: "React",
-    href: "documentation/react",
+    href: "docs/react",
     icon: "logos/react.svg",
     shadow: "shadow-cyan-500/50 dark:shadow-cyan-400/50",
   },

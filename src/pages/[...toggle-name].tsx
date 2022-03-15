@@ -1,12 +1,4 @@
-import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter"
 import clsx from "clsx"
-import {
-  coldarkDark,
-  coldarkCold,
-  // @ts-ignore
-} from "./../../node_modules/react-syntax-highlighter/dist/esm/styles/prism"
-// @ts-ignore
-import jsx from "./../../node_modules/react-syntax-highlighter/dist/esm/languages/prism/jsx"
 import { generateCode, toggles } from "../toggles/utilities"
 import React, {
   Fragment,
@@ -26,8 +18,7 @@ import { useTheme } from "next-use-theme"
 import ToggleLayout, { ToggleContext } from "../layouts/toggle/toggle"
 import { GetStaticPaths, GetStaticProps } from "next"
 import { Toggle } from "../layouts/toggle/toggle.props"
-
-SyntaxHighlighter.registerLanguage("jsx", jsx)
+import { Code } from "../components"
 
 const preprocessNodes = (classes: string) => (node: any) => {
   // do not render any <span> tags
@@ -195,22 +186,7 @@ const Toggles = ({ code, toggle }: any) => {
               </CopyToClipboard>
             </div>
           </div>
-          <div className="overflow-y-scroll scrollbar-thin dark:scrollbar-thumb-zinc-500 scrollbar-thumb-zinc-400 dark:scrollbar-track-dark-50 scrollbar-track-zinc-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
-            {theme && (
-              <SyntaxHighlighter
-                language="jsx"
-                style={theme === "light" ? coldarkCold : coldarkDark}
-                customStyle={{
-                  padding: "1em 1em 2em",
-                  margin: "none",
-                  width: "fit-content",
-                  background: "inherit",
-                }}
-              >
-                {reversed ? selected.reversed : selected.code}
-              </SyntaxHighlighter>
-            )}
-          </div>
+            <Code preClasses="overflow-y-scroll scrollbar-thin dark:scrollbar-thumb-zinc-500 scrollbar-thumb-zinc-400 dark:scrollbar-track-dark-50 scrollbar-track-zinc-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full" className="language-html" >{reversed ? selected.reversed : selected.code}</Code>
         </div>
       </div>
       <div
