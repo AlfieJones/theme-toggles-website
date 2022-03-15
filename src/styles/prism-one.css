@@ -1,6 +1,6 @@
 
 html {
-    --prism-bg: rgb(250 250 250);
+    --prism-bg: rgb(244 244 245);
     --prism-text: hsl(230, 8%, 24%);
     --prism-text-shadow: none;
 
@@ -146,20 +146,31 @@ pre[class*="language-"] {
 	color: var(--prism-url);
 }
 
+
 /* HTML overrides */
 .token.attr-value > .token.punctuation.attr-equals,
 .token.special-attr > .token.attr-value > .token.value.css {
 	color: var(--prism-punctuation);
 }
 
-/* JS overrides */
-.language-javascript .token.operator {
+/* JSX overrides */
+.language-jsx .token.operator {
 	color: var(--prism-keyword);
 }
 
-.language-javascript .token.template-string > .token.interpolation > .token.interpolation-punctuation.punctuation {
+.language-jsx .token.template-string > .token.interpolation > .token.interpolation-punctuation.punctuation {
 	color: var(--prism-interpolation)
 }
+
+.language-jsx .token.template-string > .token.interpolation > .token.interpolation-punctuation.punctuation {
+	color: var(--prism-interpolation)
+}
+
+
+.language-jsx .token.class-name {
+	color: var(--prism-tag)
+}
+
 
 /* General */
 .token.bold {

@@ -1,4 +1,5 @@
-import { useRouter } from "next/router"
+require('prismjs/components/prism-bash.min')
+require('prismjs/components/prism-jsx.min')
 import React, { FC } from "react"
 import { Tab, Tabs } from "../../components"
 import { DocumentationProps } from "./documentation.props"

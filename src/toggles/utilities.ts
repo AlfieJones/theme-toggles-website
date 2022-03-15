@@ -58,6 +58,7 @@ export interface CodeType {
   name: string
   code: string
   reversed: string
+  type: "jsx" | "html"
 }
 
 export interface DisplayType {
@@ -115,6 +116,7 @@ export function generateCode(
       variants: [
         {
           name: "button",
+          type: "jsx",
           code: prettier
             .format(ButtonReact(toggle.name), {
               semi: false,
@@ -159,6 +161,7 @@ export function generateCode(
     variants: [
       {
         name: "button",
+        type: "html",
         code: prettier
           .format(ButtonHTML(htmlBasic), {
             semi: false,
@@ -179,6 +182,7 @@ export function generateCode(
       },
       {
         name: "div",
+        type: "html",
         code: prettier
           .format(DivHTML(htmlBasic), {
             semi: false,
@@ -199,6 +203,7 @@ export function generateCode(
       },
       {
         name: "checkbox",
+        type: "html",
         code: prettier
           .format(CheckboxHTML(htmlBasic), {
             semi: false,

@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { generateCode, toggles } from "../toggles/utilities"
+import { CodeCollectionType, CodeType, generateCode, toggles } from "../toggles/utilities"
 import React, {
   Fragment,
   useContext,
@@ -14,7 +14,6 @@ import { Switch, Transition } from "@headlessui/react"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { toggles as togglesMeta } from "../toggles/data/meta"
 import Layout from "../layouts/main"
-import { useTheme } from "next-use-theme"
 import ToggleLayout, { ToggleContext } from "../layouts/toggle/toggle"
 import { GetStaticPaths, GetStaticProps } from "next"
 import { Toggle } from "../layouts/toggle/toggle.props"
@@ -67,10 +66,12 @@ function transformFn(node: any) {
   }
 }
 
-const Toggles = ({ code, toggle }: any) => {
+interface ToggleProps { code: CodeCollectionType, toggle: Toggle }
+
+const Toggles = ({ code, toggle }: ToggleProps) => {
   const [reversed, setReversed] = useState(false)
 
-  const [selected, setSelected] = useState(code.variants[0])
+  const [selected, setSelected] = useState<CodeType | undefined>(code.variants[0])
 
   const setToggle = useContext(ToggleContext)
 
@@ -83,13 +84,11 @@ const Toggles = ({ code, toggle }: any) => {
   }, [setToggle, toggle])
 
   const [show, setShow] = useState(false)
-
-  const { theme } = useTheme()
-
+  
   const display = useMemo(
     () =>
       ReactHtmlParser(code.display.code, {
-        preprocessNodes: preprocessNodes(toggle.classesToggle),
+        preprocessNodes: preprocessNodes(toggle.classesToggle || ""),
         transform: transformFn,
       }),
     [code.display.code, toggle.classesToggle]
@@ -98,7 +97,7 @@ const Toggles = ({ code, toggle }: any) => {
   const displayReversed = useMemo(
     () =>
       ReactHtmlParser(code.display.reversed, {
-        preprocessNodes: preprocessNodes(toggle.classesToggle),
+        preprocessNodes: preprocessNodes(toggle.classesToggle || ""),
         transform: transformFn,
       }),
     [code.display.reversed, toggle.classesToggle]
@@ -112,7 +111,7 @@ const Toggles = ({ code, toggle }: any) => {
             {reversed ? displayReversed : display}
           </div>
         </div>
-        <div className="w-full p-2 overflow-x-hidden rounded-md bg-zinc-50 dark:bg-dark-800">
+        <div className="w-full p-2 overflow-x-hidden rounded-md bg-zinc-100 dark:bg-dark-800">
           <div className="flex flex-wrap-reverse mx-2 overflow-auto border-b dark:border-dark-50 border-zinc-300">
             <div className="flex pr-16 space-x-2" aria-label="Wrapper">
               {code.variants.length > 1 &&
@@ -126,9 +125,9 @@ const Toggles = ({ code, toggle }: any) => {
                       )
                     }
                     className={clsx(
-                      selected.name === variant.name
+                      selected?.name === variant.name
                         ? "dark:border-blue-500 dark:text-blue-500 border-blue-600 text-blue-600"
-                        : "border-transparent text-zinc-400 dark:hover:text-zinc-200 hover:text-zinc-600 hover:border-zinc-300",
+                        : "border-transparent text-zinc-500 dark:hover:text-zinc-200 hover:text-zinc-600 hover:border-zinc-300",
                       "whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm"
                     )}
                   >
@@ -152,7 +151,7 @@ const Toggles = ({ code, toggle }: any) => {
                   <span className="sr-only">Use reversed</span>
                   <span
                     aria-hidden="true"
-                    className="absolute w-full h-full rounded-md pointer-events-none dark:bg-dark-800 bg-zinc-50"
+                    className="absolute w-full h-full rounded-md pointer-events-none dark:bg-dark-800 bg-zinc-100"
                   />
                   <span
                     aria-hidden="true"
@@ -171,7 +170,7 @@ const Toggles = ({ code, toggle }: any) => {
                 </Switch>
               </Switch.Group>
               <CopyToClipboard
-                text={selected.code}
+                text={selected?.code || ""}
                 onCopy={() => {
                   setShow(true)
                   setTimeout(() => setShow(false), 4000)
@@ -186,7 +185,7 @@ const Toggles = ({ code, toggle }: any) => {
               </CopyToClipboard>
             </div>
           </div>
-            <Code preClasses="overflow-y-scroll scrollbar-thin dark:scrollbar-thumb-zinc-500 scrollbar-thumb-zinc-400 dark:scrollbar-track-dark-50 scrollbar-track-zinc-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full" className="language-html" >{reversed ? selected.reversed : selected.code}</Code>
+            <Code preClasses="overflow-y-scroll scrollbar-thin dark:scrollbar-thumb-zinc-500 scrollbar-thumb-zinc-400 dark:scrollbar-track-dark-50 scrollbar-track-zinc-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full" className={`language-${selected?.type}`} >{reversed ? selected?.reversed : selected?.code}</Code>
         </div>
       </div>
       <div
