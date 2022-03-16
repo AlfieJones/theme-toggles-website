@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react"
 import { CodeProps } from "./code.props";
-import { highlightAll, highlight, languages } from "prismjs";
+import { highlight, languages } from "prismjs";
 import clsx from "clsx";
 
 export const CodeFormatter: FC<CodeProps> = ({

@@ -25,7 +25,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
     }
   }
 
-  function NextLink(props) {
+  function NextLink(props: { [x: string]: any; href: any; children: any }) {
     const { href, children, ...rest } = props;
     return (
       <Link href={href}>
