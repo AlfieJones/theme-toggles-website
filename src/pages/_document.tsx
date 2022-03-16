@@ -4,7 +4,7 @@ import { ThemeScript } from "next-use-theme"
 
 const Document = () => {
   return (
-    <Html>
+    <Html lang="en">
       <Head>
         <ThemeScript />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
