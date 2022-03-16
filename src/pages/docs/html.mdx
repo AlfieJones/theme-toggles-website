@@ -27,16 +27,15 @@ You can also just copy the reversed toggle code via the toggle page.
 
 ## Accessability 
 
-Although it's provided, the div wrapper isn't preferred due to the lack of native accessability.
-
 When using the button wrapper, it's recommend that you apply an appropriate <span className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">aria-label</span>. This is done by default on the copied code for each toggle.
 
 When using the checkbox, we need to apply an appropriate label with hidden text for a screen reader. Each toggle comes with a \<span\> containing this text.
 
 When using the div, we can add hidden text for a screen reader. Each toggle comes with a \<span\> containing this text.
 
-
 You should also apply a relevant <span className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">tabIndex</span> attribute
+
+> Although it's provided, the div wrapper isn't preferred due to the lack of native accessability.
 
 
 export default ({ children }) => <Layout><SettingsLayout>{children}</SettingsLayout></Layout>
