@@ -7,7 +7,7 @@ import React, { FC, Fragment } from "react"
 import { ThemeProvider } from "next-use-theme"
 import { NextPage } from "next"
 import { AppProps } from "next/app"
-import { BlockQuote, H1, H2, H3, H4, H5, H6, P } from "../components/mdx"
+import { BlockQuote, H1, H2, H3, H4, H5, H6, LI, OL, P } from "../components/mdx"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXComponents } from "mdx/types"
 import { CodeFormatter } from "../components"
@@ -31,7 +31,9 @@ const components = {
   p: P,
   code: CodeFormatter,
   pre: Fragment,
-  blockquote: BlockQuote
+  blockquote: BlockQuote,
+  li: LI,
+  ol: OL
 } as MDXComponents
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {

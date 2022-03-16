@@ -185,7 +185,7 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
               </CopyToClipboard>
             </div>
           </div>
-            <Code preClasses="overflow-y-scroll scrollbar-thin dark:scrollbar-thumb-zinc-500 scrollbar-thumb-zinc-400 dark:scrollbar-track-dark-50 scrollbar-track-zinc-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full" className={`language-${selected?.type}`} >{reversed ? selected?.reversed : selected?.code}</Code>
+            <Code className={`language-${selected?.type}`} >{reversed ? selected?.reversed : selected?.code}</Code>
         </div>
       </div>
       <div
