@@ -1,14 +1,16 @@
 import "../styles/globals.css"
 import "@theme-toggles/react/dist/css/bundle.css"
 import "../styles/prism-one.css";
+require('prismjs/components/prism-bash.min')
+require('prismjs/components/prism-jsx.min')
 import React, { FC, Fragment } from "react"
 import { ThemeProvider } from "next-use-theme"
 import { NextPage } from "next"
 import { AppProps } from "next/app"
-import { H1, H2, H3, H4, H5, H6, P } from "../components/mdx"
+import { BlockQuote, H1, H2, H3, H4, H5, H6, P } from "../components/mdx"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXComponents } from "mdx/types"
-import { Code } from "../components"
+import { CodeFormatter } from "../components"
 
 type NextPageWithLayout = NextPage & {
   PrimaryLayout?: FC
@@ -27,8 +29,9 @@ const components = {
   h5: H5,
   h6: H6,
   p: P,
-  code: Code,
-  pre: Fragment
+  code: CodeFormatter,
+  pre: Fragment,
+  blockquote: BlockQuote
 } as MDXComponents
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {

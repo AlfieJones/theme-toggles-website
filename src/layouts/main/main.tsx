@@ -25,6 +25,15 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
     }
   }
 
+  function NextLink(props) {
+    const { href, children, ...rest } = props;
+    return (
+      <Link href={href}>
+        <a {...rest}>{children}</a>
+      </Link>
+    );
+  }
+
   return (
     <>
       <div className="relative min-h-screen overflow-hidden bg-white dark:bg-dark-900">
@@ -140,8 +149,10 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                       <div className="px-2 pt-2 pb-3">
                         {navigation.map((item) => (
                           <Link href={item.href} >
-                            <a
-                              key={item.name} 
+                            <Popover.Button
+                              as={NextLink}
+                              key={item.name}
+                              href={item.href}
                               className={clsx(
                                 "block px-3 py-2 rounded-md text-base font-medium hover:text-zinc-900 hover:bg-zinc-50 dark:hover:bg-dark-700",
                                 matches(item)
@@ -150,7 +161,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                               )}
                             >
                               {item.name}
-                            </a>
+                            </Popover.Button>
                           </Link>
                         ))}
                       </div>

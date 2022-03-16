@@ -13,25 +13,25 @@ yarn add @theme-toggles/react
 npm install @theme-toggles/react
 ```
 2. Import css into app.js or equivalent
-```js
+```jsx
 // app.js or equivalent
 import "@theme-toggles/react/dist/css/[toggle name].css"
 ```
 > Note: You can import all css using bundle.css but this isn't recommended unless all toggles are being used, this will include unused css. 
 
 3. Import and use the component, so the classic toggle would look like
-```js
+```jsx
 import { Classic } from "@theme-toggles/react"
 
 <Classic />
 ```
 ### Reversed
 All the toggles are reversible by using the Reversed component
-```js
+```jsx
 // app.js or equivalent
 import "@theme-toggles/react/dist/css/ClassicReversed.css"
 ```
-```js
+```jsx
 import { ClassicReversed } from "@theme-toggles/react"
 
 <ClassicReversed />
@@ -40,6 +40,7 @@ import { ClassicReversed } from "@theme-toggles/react"
 export default ({ children }) => <Layout><SettingsLayout>{children}</SettingsLayout></Layout>
 
 ## Props
+The component accepts all the button props as well as the following
 
 <dl className="dark:text-gray-50 text-gray-900">
 
@@ -49,24 +50,25 @@ export default ({ children }) => <Layout><SettingsLayout>{children}</SettingsLay
     <b>Default:</b> 750ms
   </dd>
 
-  <dt><code className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">onToggle</code>: number</dt>
-  <dd>The duration of the animation in milliseconds</dd>
+  <dt><code className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">onToggle</code>: (toggled: boolean) => void</dt>
+  <dd>Called when a user clicks the toggle</dd>
   <dd>
-    <b>Default:</b> 750ms
+    <b>Default:</b> undefined
   </dd>
 
   <dt><code className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">toggled</code>: boolean</dt>
-  <dd>The duration of the animation in milliseconds</dd>
+  <dd>Used to specify if the toggle active. If undefined, the toggle will use it's internal state</dd>
   <dd>
-    <b>Default:</b> 750ms
+    <b>Default:</b> undefined
   </dd>
-  <dt><code className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">toggle</code>: number</dt>
-  <dd>The duration of the animation in milliseconds</dd>
+  <dt><code className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">toggle</code>: Dispatch\<SetStateAction\<boolean\>\></dt>
+  <dd>Used to provide your own state</dd>
   <dd>
-    <b>Default:</b> 750ms
+    <b>Default:</b> undefined
   </dd>
-
-
-
 </dl>
+
+## Accessability 
+
+As the toggle is a button, we use the aria-label for accessability. Since these components are built with accessability in mind, this defaults to "Toggle Theme".
 

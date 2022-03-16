@@ -2,6 +2,7 @@ import { ButtonHTML, ButtonReact } from "./varients/button"
 import { CheckboxHTML } from "./varients/checkbox"
 import prettier from "prettier/standalone"
 import parser from "prettier/parser-typescript"
+import { highlight, languages } from "prismjs"
 import { DivHTML } from "./varients/div"
 
 function importToggles(r: any) {
@@ -18,6 +19,47 @@ export const toggles = importToggles(
   // @ts-ignore
   require.context(`theme-toggles/assets/svgs/`, false, /\.svg$/)
 )
+
+function highlightCode(code: string, language: "jsx"|"html"){
+  
+  return highlight(code, languages[language], language)
+}
+
+function formatHTMl(code: string, wrapper: (svg: string) => string, reversed: boolean = false, highlight = true){
+  let formatted = prettier.format(wrapper(code), {
+    semi: false,
+    parser: "typescript",
+    plugins: [parser],
+  })
+  .replace(";", "")
+  .replace(/[\r\n]+$/, "");
+
+  if(reversed)
+    formatted = formatted.replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"');
+
+  if(highlight)
+    return highlightCode(formatted, "html")
+  else 
+    return formatted
+}
+
+function formatReact(name: string, reversed: boolean = false, highlight = true){
+  if(reversed)
+    name = name.concat("Reversed");
+
+  let formatted = prettier.format(ButtonReact(name), {
+    semi: false,
+    parser: "typescript",
+    plugins: [parser],
+  })
+  .replace(";", "")
+  .replace(/[\r\n]+$/, "");
+
+  if(highlight)
+    return highlightCode(formatted, "jsx")
+  else 
+    return formatted
+}
 
 function stringifyAttrs(attrs: any, filter = (i: any) => true) {
   let str = Object.keys(attrs)
@@ -92,135 +134,44 @@ export function generateCode(
     .replace(/view-box=/g, "viewBox=")
     .replace(/path-length=/g, "pathLength=")
 
+    const display = {
+      reversed: formatHTMl(htmlBasic, CheckboxHTML, true, false),
+      code: formatHTMl(htmlBasic, CheckboxHTML, false, false),
+    }
+
   if (framework === "react")
     return {
-      display: {
-        reversed: prettier
-          .format(CheckboxHTML(htmlBasic), {
-            semi: false,
-            parser: "typescript",
-            plugins: [parser],
-          })
-          .replace(";", "")
-          .replace(/[\r\n]+$/, "")
-          .replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"'),
-        code: prettier
-          .format(CheckboxHTML(htmlBasic), {
-            semi: false,
-            parser: "typescript",
-            plugins: [parser],
-          })
-          .replace(";", "")
-          .replace(/[\r\n]+$/, ""),
-      },
+      display,
       variants: [
         {
           name: "button",
           type: "jsx",
-          code: prettier
-            .format(ButtonReact(toggle.name), {
-              semi: false,
-              parser: "typescript",
-              plugins: [parser],
-            })
-            .replace(";", "")
-            .replace(/[\r\n]+$/, ""),
-          reversed: prettier
-            .format(ButtonReact(toggle.name.concat("Reversed")), {
-              semi: false,
-              parser: "typescript",
-              plugins: [parser],
-            })
-            .replace(";", "")
-            .replace(/[\r\n]+$/, "")
-            .replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"'),
+          code: formatReact(toggle.name),
+          reversed: formatReact(toggle.name, true),
         },
       ],
     }
 
   return {
-    display: {
-      reversed: prettier
-        .format(CheckboxHTML(htmlBasic), {
-          semi: false,
-          parser: "typescript",
-          plugins: [parser],
-        })
-        .replace(";", "")
-        .replace(/[\r\n]+$/, "")
-        .replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"'),
-      code: prettier
-        .format(CheckboxHTML(htmlBasic), {
-          semi: false,
-          parser: "typescript",
-          plugins: [parser],
-        })
-        .replace(";", "")
-        .replace(/[\r\n]+$/, ""),
-    },
+    display,
     variants: [
       {
         name: "button",
         type: "html",
-        code: prettier
-          .format(ButtonHTML(htmlBasic), {
-            semi: false,
-            parser: "typescript",
-            plugins: [parser],
-          })
-          .replace(";", "")
-          .replace(/[\r\n]+$/, ""),
-        reversed: prettier
-          .format(ButtonHTML(htmlBasic), {
-            semi: false,
-            parser: "typescript",
-            plugins: [parser],
-          })
-          .replace(";", "")
-          .replace(/[\r\n]+$/, "")
-          .replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"'),
+        code: formatHTMl(htmlBasic, ButtonHTML),
+        reversed: formatHTMl(htmlBasic, ButtonHTML, true),
       },
       {
         name: "div",
         type: "html",
-        code: prettier
-          .format(DivHTML(htmlBasic), {
-            semi: false,
-            parser: "typescript",
-            plugins: [parser],
-          })
-          .replace(";", "")
-          .replace(/[\r\n]+$/, ""),
-        reversed: prettier
-          .format(DivHTML(htmlBasic), {
-            semi: false,
-            parser: "typescript",
-            plugins: [parser],
-          })
-          .replace(";", "")
-          .replace(/[\r\n]+$/, "")
-          .replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"'),
+        code: formatHTMl(htmlBasic, DivHTML),
+        reversed: formatHTMl(htmlBasic, DivHTML, true),
       },
       {
         name: "checkbox",
         type: "html",
-        code: prettier
-          .format(CheckboxHTML(htmlBasic), {
-            semi: false,
-            parser: "typescript",
-            plugins: [parser],
-          })
-          .replace(";", "")
-          .replace(/[\r\n]+$/, ""),
-        reversed: prettier
-          .format(CheckboxHTML(htmlBasic), {
-            semi: false,
-            parser: "typescript",
-            plugins: [parser],
-          })
-          .replace(";", "")
-          .replace(/[\r\n]+$/, "")
-          .replace(/(.)(?<=<svg[\s\S]*class=".+?")/, '-reversed"'),
+        code: formatHTMl(htmlBasic, CheckboxHTML),
+        reversed: formatHTMl(htmlBasic, CheckboxHTML, true),
       },
     ],
   }

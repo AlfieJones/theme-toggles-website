@@ -1,5 +1,3 @@
-require('prismjs/components/prism-bash.min')
-require('prismjs/components/prism-jsx.min')
 import React, { FC } from "react"
 import { Tab, Tabs } from "../../components"
 import { DocumentationProps } from "./documentation.props"
@@ -17,7 +15,7 @@ const SettingsLayout: FC<DocumentationProps> = ({
         Framework
       </h3>
       <Tabs tabs={tabs} base="/docs" concatBase />
-      <div className="-mt-10">{children}</div>
+      <div className="-mt-10 text-gray-900 dark:text-gray-100">{children}</div>
     </>
   )
 }

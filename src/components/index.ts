@@ -3,4 +3,5 @@ export { default as Tabs } from "./tabs"
 export { default as Image } from "./image"
 export { default as Code } from "./code"
 
+export * from "./code"
 export * from "./tabs"

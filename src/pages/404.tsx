@@ -1,3 +1,4 @@
+import Link from "next/link"
 import Layout from "../layouts/main"
 
 export default function Error() {
@@ -18,12 +19,13 @@ export default function Error() {
               </p>
             </div>
             <div className="flex mt-10 space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-              <a
-                href="#"
-                className="text-base font-medium text-blue-600 hover:text-blue-500"
-              >
-                Go back home<span aria-hidden="true"> &rarr;</span>
-              </a>
+              <Link href="/">
+                <a
+                  className="text-base font-medium text-blue-600 hover:text-blue-500"
+                >
+                  Go back home<span aria-hidden="true"> &rarr;</span>
+                </a>
+              </Link>
             </div>
           </div>
         </main>
