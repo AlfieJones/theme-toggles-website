@@ -18,6 +18,7 @@ import ToggleLayout, { ToggleContext } from "../layouts/toggle/toggle"
 import { GetStaticPaths, GetStaticProps } from "next"
 import { Toggle } from "../layouts/toggle/toggle.props"
 import { Code } from "../components"
+import {NextSeo} from "next-seo"
 
 const preprocessNodes = (classes: string) => (node: any) => {
   // do not render any <span> tags
@@ -105,6 +106,10 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
 
   return (
     <>
+    <NextSeo
+    title={toggle.name}
+    description="See the toggle in action and get the code"
+  />
       <div className="flex flex-col items-center mt-12 md:items-start md:mt-24 md:flex-row">
         <div className="h-full px-6 mb-6 lg:px-12 md:mb-0 ">
           <div className="p-6 first-line:rounded-md ">

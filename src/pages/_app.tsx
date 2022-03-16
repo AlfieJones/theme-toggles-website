@@ -11,6 +11,9 @@ import { BlockQuote, H1, H2, H3, H4, H5, H6, LI, OL, P } from "../components/mdx
 import { MDXProvider } from "@mdx-js/react"
 import { MDXComponents } from "mdx/types"
 import { CodeFormatter } from "../components"
+import SEO from '../../next-seo.config'
+import { DefaultSeo } from 'next-seo';
+
 
 type NextPageWithLayout = NextPage & {
   PrimaryLayout?: FC
@@ -41,6 +44,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const SecondaryLayout = Component.SecondaryLayout || Fragment
   return (
     <ThemeProvider>
+      <DefaultSeo {...SEO} />
       <MDXProvider components={components}>
       <PrimaryLayout>
         <SecondaryLayout>

@@ -22,6 +22,7 @@
     "html-entities": "^2.3.2",
     "next": "12",
     "next-compose-plugins": "^2.2.1",
+    "next-seo": "^5.1.0",
     "next-use-theme": "^3.0.4",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.27.0",

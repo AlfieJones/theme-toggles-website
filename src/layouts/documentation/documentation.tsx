@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import { Tab, Tabs } from "../../components"
 import { DocumentationProps } from "./documentation.props"
+import {NextSeo} from "next-seo"
 
 const tabs: Tab[] = [
   { title: "HTML", key: 0, pathname: "/html", default: true },
@@ -11,6 +12,9 @@ const SettingsLayout: FC<DocumentationProps> = ({
 }: DocumentationProps) => {
   return (
     <>
+    <NextSeo
+      title="Docs"
+      description="Documentation for theme toggles" />
       <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
         Framework
       </h3>
