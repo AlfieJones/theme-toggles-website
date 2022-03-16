@@ -3,6 +3,7 @@ import Link from "next/link"
 import Layout from "../../layouts/main"
 import { H1 } from "../../components/mdx"
 
+
 # React Component
 The official react component library for our toggles built from the HTML package
 
@@ -42,7 +43,7 @@ export default ({ children }) => <Layout><SettingsLayout>{children}</SettingsLay
 
 ### Handling state
 The component can handle it's own state internally but also provides a way for you to have complete control.
-The follow example shows how you can provide your own state
+The following example shows how you can provide your own state
  ```jsx
 const [isToggled, setToggle] = useState(false)
 
@@ -53,7 +54,7 @@ const [isToggled, setToggle] = useState(false)
 The toggles use currentColor for their SVGs. To change the color of a toggle, simply change the css <b>color</b> property of the component.
 
 ## Toggles
-Find the full range of toggles <Link href="/"><a className="text-blue-500">here</a></Link>. The React code can be found via the upper tab when on a toggles page
+Find the full range of toggles <Link href="/"><a className="text-blue-500">here</a></Link>. The React code can be found via the upper tab when on a toggle's page
 
 ## Props
 The component accepts all the button props as well as the following
@@ -86,5 +87,7 @@ The component accepts all the button props as well as the following
 
 ## Accessability 
 
-As the toggle is a button, we use the aria-label for accessability. Since these components are built with accessability in mind, this defaults to "Toggle Theme".
+As the toggle is a button, we use the <span className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">aria-label</span> for accessability. Since these components are built with accessability in mind, this defaults to "Toggle Theme".
+
+You can also provided a <span className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">tabIndex</span> attribute
 

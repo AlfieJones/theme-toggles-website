@@ -4234,10 +4234,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-theme-toggles@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/theme-toggles/-/theme-toggles-2.0.0.tgz#cbc7b6ca180082bd947b1013624f68e1cc8888b3"
-  integrity sha512-2UMKxlVzvRHQNgrD95waDh2KpuyZ1Ip7LyvW6dL77IV7RI/QiFfqtSaPrSMgp4oDG5DlFtXCZqidGQHL5BQecg==
+theme-toggles@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/theme-toggles/-/theme-toggles-2.4.1.tgz#2e82cc45cdfe29fede0f9239dbbf224842eec4ba"
+  integrity sha512-bv6B2hCQWXFdUctSPifnWUoTeEkOycMTq9eCOM3zVrKgcDJpwCA7VfPegFRWZtcFNHSCKbCzrcAeRFKjf/ekwg==
   dependencies:
     grunt-css-purge "^1.1.0"
 

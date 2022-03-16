@@ -1,8 +1,42 @@
 import SettingsLayout from "../../layouts/documentation"
 import Layout from "../../layouts/main"
+import Link from "next/link"
 
 # HTML
-Built off Sass this can be used with any framework but, if your framework is supported, it's advised to use the offical component
+Built off Sass this can be used with any framework but, if your framework is supported, it's advised to use the official component
+
+## Usage
+1. Pick the toggle you want to use from <Link href="/"><a className="text-blue-500">here</a></Link>
+1. Add the css into your \<head\>
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-toggles@{html-version}/build/{toggle name}.css">
+```
+<p className="text-xl py-4"> Find the full list of css from <a href="https://www.jsdelivr.com/package/npm/theme-toggles?path=build" className="text-blue-500">JSDelivr</a> including SRI</p>
+
+3. Copy the corresponding html for the toggle of your choice, found on each toggles page
+
+### Styling
+The toggles use currentColor for their SVGs. To change the color of a toggle, simply change the css <b>color</b> property of the component.
+
+### Animation duration
+Each toggle uses a css variable to store the duration of the animation in ms. It defaults to 750ms. The css variable is added onto the outer layer of the toggle via the theme-toggle class. To override it you should apply your new value onto the svg.
+
+### Reversed
+Each toggle is reversible by appending -reversed onto the SVGs class. So theme-toggle__inner-moon would become theme-toggle__inner-moon-reversed.
+You can also just copy the reversed toggle code via the toggle page.
+
+## Accessability 
+
+Although it's provided, the div wrapper isn't preferred due to the lack of native accessability.
+
+When using the button wrapper, it's recommend that you apply an appropriate <span className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">aria-label</span>. This is done by default on the copied code for each toggle.
+
+When using the checkbox, we need to apply an appropriate label with hidden text for a screen reader. Each toggle comes with a \<span\> containing this text.
+
+When using the div, we can add hidden text for a screen reader. Each toggle comes with a \<span\> containing this text.
+
+
+You should also apply a relevant <span className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">tabIndex</span> attribute
 
 
 export default ({ children }) => <Layout><SettingsLayout>{children}</SettingsLayout></Layout>
