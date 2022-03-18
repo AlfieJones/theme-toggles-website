@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://toggles.dev
+
+# Sitemaps
+Sitemap: https://toggles.dev/sitemap.xml
