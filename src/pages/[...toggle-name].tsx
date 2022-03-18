@@ -54,7 +54,7 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
         description="See the toggle in action and get the code"
       />
       <div className="flex flex-col items-center mt-12 lg:items-start lg:mt-24 lg:flex-row">
-        <div className="h-full px-6 mb-6">
+        <div className="h-full">
           <div className="relative p-6 w-72 h-72">
             <label
               className={clsx(
@@ -68,7 +68,7 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
             />
           </div>
         </div>
-        <div className="w-full ">
+        <div className="w-full overflow-hidden">
         <div className="p-2 mx-auto rounded-md bg-zinc-100 dark:bg-dark-800">
           <div className="flex flex-wrap-reverse mx-2 overflow-auto border-b dark:border-dark-50 border-zinc-300 scrollbar scrollbar-thin dark:scrollbar-thumb-zinc-500 scrollbar-thumb-zinc-400 dark:scrollbar-track-dark-800 scrollbar-track-zinc-200 scrollbar-thumb-rounded scrollbar-track-rounded-md">
             <div className="flex pr-4 space-x-2 xs:pr-16" aria-label="Wrapper">

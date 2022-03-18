@@ -238,10 +238,10 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.1.tgz#782fa5da44c4f38ae9fd38e9184b54e451936118"
   integrity sha512-BUyKJGdDWqvWC5GEhyOiUrGNi9iJUr4CU0O2WxJL6QJhHeeA/NVBalH+FeK0r/x/W0rPymXt5s78TDS7d6lCwg==
 
-"@theme-toggles/react@^2.0.5":
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/@theme-toggles/react/-/react-2.0.5.tgz#72a9f6c888568393a6c72013d985786ea97dc2f4"
-  integrity sha512-n0/hXFJ6IfsVrQLvBUdNALbZegUD6ywdpMn+WhvM5jwcwZMkCKOE07u8ceCgyqdYRH+hMy5zglcK9lgEn+b0Rg==
+"@theme-toggles/react@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@theme-toggles/react/-/react-2.2.0.tgz#2e3c8817807b36e89531537932613b60cadc3f4b"
+  integrity sha512-pRQvViXdU1ukdKHhlRNMwJQMXpJ8Pf3TfhrCZvJSZ6xuQdGs+bIrOX9zjlSjdjwBHDmEk7u/cdqjMdQSm4u3Nw==
 
 "@types/acorn@^4.0.0":
   version "4.0.6"
@@ -4176,10 +4176,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-theme-toggles@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/theme-toggles/-/theme-toggles-3.2.1.tgz#8aa70c0fd853793ca490ae6e44e0b290d22382c2"
-  integrity sha512-TgZD1EDOWyYGOhrvzuE2Dk1tuV61e1YbhVUW3Itr80HUU7IJ8lLW3AJDAB+BEIMgpncCAiPv2t6hLkRXtkqmuw==
+theme-toggles@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/theme-toggles/-/theme-toggles-3.3.2.tgz#d9186a056777c4ad2d1483b3c279f58d6fc22c67"
+  integrity sha512-tvsVsxGgx3/ueHm21BnNbUvaXJIKSUdSZ3Wh9ySpLF7G7B2pD+rqz7N9upgA7nr6Hbh2mSM25zTmnWrGHnCu5Q==
   dependencies:
     grunt-css-purge "^1.1.0"
 

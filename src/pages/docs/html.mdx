@@ -15,6 +15,24 @@ Built off Sass this can be used with any framework but, if your framework is sup
 
 3. Copy the corresponding html for the toggle of your choice, found on each toggles page
 
+### Toggling
+When using the button or div wrappers, we need to add the toggle class <span className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">theme-toggle--toggled</span>.
+```html
+<button class="theme-toggle theme-toggle--toggled" type="button" aria-label="Toggle theme">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1em"
+    height="1em"
+    class="theme-toggle__dark-side"
+    fill="currentColor"
+    viewBox="0 0 512 512"
+  >
+    <path d="M256 0a256 256 0 1 0 0 512 256 256 0 0 0 0-512Zm0 464V48a208 208 0 0 1 0 416Z" />
+  </svg>
+</button>
+```
+> The checkbox wrapper manages the toggling on its own. You can manipulate this like you would with any checkbox
+
 ### Styling
 The toggles use currentColor for their SVGs. To change the color of a toggle, simply change the css <b>color</b> property of the component.
 
