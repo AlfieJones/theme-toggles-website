@@ -58,8 +58,7 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
           <div className="relative p-6 w-72 h-72">
             <label
               className={clsx(
-                "theme-toggle",
-                toggle.classesToggle,
+                "theme-toggle text-gray-800 dark:text-gray-100",
                 reversed && "theme-toggle--reversed"
               )}
               dangerouslySetInnerHTML={{
