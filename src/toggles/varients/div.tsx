@@ -1,15 +1,5 @@
-export const DivJSX = (svg: string) => {
-  return `
-  <div className="theme-toggle">
-    <span className="sr-only">Toggle theme</span>
-    ${svg}
-  </div>`
-}
-
-export const DivHTML = (svg: string) => {
-  return `
+export const DivHTML = (svg: string) => `
   <div class="theme-toggle">
-    <span class="sr-only">Toggle theme</span>
+    <span class="theme-toggle-sr">Toggle theme</span>
     ${svg}
-  </div>`
-}
+  </div>`;

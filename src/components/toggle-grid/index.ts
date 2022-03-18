@@ -1,1 +1,1 @@
-export { default } from "./toggle-grid"
+export { default } from "./toggle-grid";

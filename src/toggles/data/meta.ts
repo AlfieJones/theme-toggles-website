@@ -27,4 +27,11 @@ export const toggles = [
     classesGrid: "dark:bg-[#008ECC] bg-[#8acbe7]",
     classesToggle: "text-[#008ECC]",
   },
-]
+  {
+    name: "Expand",
+    svg: "expand",
+    description: "Expands into a moon",
+    classesGrid: "dark:bg-[#cfbaff] bg-[#f1ebff]",
+    classesToggle: "text-[#cfbaff]",
+  },
+];

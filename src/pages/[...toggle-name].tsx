@@ -1,124 +1,77 @@
-import clsx from "clsx"
-import { CodeCollectionType, CodeType, generateCode, toggles } from "../toggles/utilities"
-import React, {
-  Fragment,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react"
-import ReactHtmlParser, { convertNodeToElement } from "react-html-parser"
-import { CheckCircleIcon, XIcon } from "@heroicons/react/solid"
-import { ClipboardCopyIcon } from "@heroicons/react/solid"
-import { Switch, Transition } from "@headlessui/react"
-import { CopyToClipboard } from "react-copy-to-clipboard"
-import { toggles as togglesMeta } from "../toggles/data/meta"
-import Layout from "../layouts/main"
-import ToggleLayout, { ToggleContext } from "../layouts/toggle/toggle"
-import { GetStaticPaths, GetStaticProps } from "next"
-import { Toggle } from "../layouts/toggle/toggle.props"
-import { Code } from "../components"
-import {NextSeo} from "next-seo"
+/* eslint-disable  */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import clsx from "clsx";
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import {
+  CheckCircleIcon,
+  XIcon,
+  ClipboardCopyIcon,
+} from "@heroicons/react/solid";
+import { Switch, Transition } from "@headlessui/react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
+import { toggles as togglesMeta } from "../toggles/data/meta";
+import Layout from "../layouts/main";
+import ToggleLayout, { ToggleContext } from "../layouts/toggle/toggle";
+import { Toggle } from "../layouts/toggle/toggle.props";
+import { Code } from "../components";
+import {
+  CodeCollectionType,
+  generateCode,
+  ToggleCodeType,
+  toggles,
+} from "../toggles/utilities";
 
-const preprocessNodes = (classes: string) => (node: any) => {
-  // do not render any <span> tags
-  node[0].children[5].attribs = {
-    ...node[0].children[5].attribs,
-    class: `${node[0].children[5].attribs.class} w-56 py-5 lg:w-64 inner-moon ${classes}`,
-  }
-  return node
+interface ToggleProps {
+  code: CodeCollectionType;
+  toggle: Toggle;
 }
-
-// Fixes issue where viewBox is viewbox
-function transformFn(node: any) {
-  if (node.name === "svg") {
-    const { viewbox, ...rest } = node.attribs
-
-    return (
-      <svg {...rest} viewBox={viewbox}>
-        {node.children.map((child: any, index: number) => {
-          if (child.name === "path") {
-            const { pathlength, ...rest } = child.attribs
-
-            return (
-              <path {...rest} pathLength={pathlength}>
-                {child.children.map((child2: any, index: number) => {
-                  return convertNodeToElement(child2, index, transformFn)
-                })}
-              </path>
-            )
-          }
-          return convertNodeToElement(child, index, transformFn)
-        })}
-      </svg>
-    )
-  }
-
-  if (node.name === "path") {
-    const { pathlength, ...rest } = node.attribs
-
-    return (
-      <path {...rest} pathLength={pathlength}>
-        {node.children.map((child: any, index: number) => {
-          return convertNodeToElement(child, index, transformFn)
-        })}
-      </path>
-    )
-  }
-}
-
-interface ToggleProps { code: CodeCollectionType, toggle: Toggle }
 
 const Toggles = ({ code, toggle }: ToggleProps) => {
-  const [reversed, setReversed] = useState(false)
+  const [reversed, setReversed] = useState(false);
 
-  const [selected, setSelected] = useState<CodeType | undefined>(code.variants[0])
+  const [selected, setSelected] = useState<ToggleCodeType | undefined>(
+    code.variants[0]
+  );
 
-  const setToggle = useContext(ToggleContext)
-
-  useEffect(() => {
-    setSelected(code.variants[0])
-  }, [code.variants])
+  const setToggle = useContext(ToggleContext);
 
   useEffect(() => {
-    setToggle && setToggle(toggle)
-  }, [setToggle, toggle])
+    setSelected(code.variants[0]);
+  }, [code.variants]);
 
-  const [show, setShow] = useState(false)
-  
-  const display = useMemo(
-    () =>
-      ReactHtmlParser(code.display.code, {
-        preprocessNodes: preprocessNodes(toggle.classesToggle || ""),
-        transform: transformFn,
-      }),
-    [code.display.code, toggle.classesToggle]
-  )
+  useEffect(() => {
+    if (setToggle) setToggle(toggle);
+  }, [setToggle, toggle]);
 
-  const displayReversed = useMemo(
-    () =>
-      ReactHtmlParser(code.display.reversed, {
-        preprocessNodes: preprocessNodes(toggle.classesToggle || ""),
-        transform: transformFn,
-      }),
-    [code.display.reversed, toggle.classesToggle]
-  )
+  const [show, setShow] = useState(false);
 
   return (
     <>
-    <NextSeo
-    title={toggle.name}
-    description="See the toggle in action and get the code"
-  />
-      <div className="flex flex-col items-center mt-12 md:items-start md:mt-24 md:flex-row">
-        <div className="h-full px-6 mb-6 lg:px-12 md:mb-0 ">
-          <div className="p-6 first-line:rounded-md ">
-            {reversed ? displayReversed : display}
+      <NextSeo
+        title={toggle.name}
+        description="See the toggle in action and get the code"
+      />
+      <div className="flex flex-col items-center mt-12 lg:items-start lg:mt-24 lg:flex-row">
+        <div className="h-full">
+          <div className="relative p-6 w-72 h-72">
+            <label
+              className={clsx(
+                "theme-toggle",
+                toggle.classesToggle,
+                reversed && "theme-toggle--reversed"
+              )}
+              dangerouslySetInnerHTML={{
+                __html: `<input type="checkbox" /><span class="sr-only">Toggle theme</span>${code.display}`,
+              }}
+            />
           </div>
         </div>
-        <div className="w-full p-2 overflow-x-hidden rounded-md bg-zinc-100 dark:bg-dark-800">
-          <div className="flex flex-wrap-reverse mx-2 overflow-auto border-b dark:border-dark-50 border-zinc-300">
-            <div className="flex pr-16 space-x-2" aria-label="Wrapper">
+        <div className="w-full overflow-hidden">
+        <div className="p-2 mx-auto rounded-md bg-zinc-100 dark:bg-dark-800">
+          <div className="flex flex-wrap-reverse mx-2 overflow-auto border-b dark:border-dark-50 border-zinc-300 scrollbar scrollbar-thin dark:scrollbar-thumb-zinc-500 scrollbar-thumb-zinc-400 dark:scrollbar-track-dark-800 scrollbar-track-zinc-200 scrollbar-thumb-rounded scrollbar-track-rounded-md">
+            <div className="flex pr-4 space-x-2 xs:pr-16" aria-label="Wrapper">
               {code.variants.length > 1 &&
                 code.variants.map((variant: any) => (
                   <button
@@ -131,7 +84,7 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
                     }
                     className={clsx(
                       selected?.name === variant.name
-                        ? "dark:border-blue-500 dark:text-blue-500 border-blue-600 text-blue-600"
+                        ? "dark:border-blue-500  dark:text-blue-500 border-blue-600 text-blue-600"
                         : "border-transparent text-zinc-500 dark:hover:text-zinc-200 hover:text-zinc-600 hover:border-zinc-300",
                       "whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm"
                     )}
@@ -175,10 +128,10 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
                 </Switch>
               </Switch.Group>
               <CopyToClipboard
-                text={selected?.code || ""}
+                text={selected?.code.plain || ""}
                 onCopy={() => {
-                  setShow(true)
-                  setTimeout(() => setShow(false), 4000)
+                  setShow(true);
+                  setTimeout(() => setShow(false), 4000);
                 }}
               >
                 <button type="button" className="ml-5 mr-2">
@@ -190,7 +143,10 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
               </CopyToClipboard>
             </div>
           </div>
-            <Code className={`language-${selected?.type}`} >{reversed ? selected?.reversed : selected?.code}</Code>
+          <Code className={`language-${selected?.type}`}>
+            {reversed ? selected?.reversed.highlighted : selected?.code.highlighted}
+          </Code>
+        </div>
         </div>
       </div>
       <div
@@ -227,7 +183,7 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
                     <button
                       className="inline-flex rounded-md text-zinc-400 dark:text-zinc-200 hover:text-zinc-500 focus:outline-none dark:ring-offset-dark-400 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                       onClick={() => {
-                        setShow(false)
+                        setShow(false);
                       }}
                     >
                       <span className="sr-only">Close</span>
@@ -241,31 +197,38 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-Toggles.PrimaryLayout = Layout
-Toggles.SecondaryLayout = ToggleLayout
+Toggles.PrimaryLayout = Layout;
+Toggles.SecondaryLayout = ToggleLayout;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const toggleMeta = togglesMeta.find(
-    //@ts-ignore
+    // @ts-ignore
     (t) => t.svg === context.params["toggle-name"][0]
-  )
+  );
   const toggle = toggles.find(
     (toggle: Toggle) => toggle.name === toggleMeta?.svg
-  )
+  );
 
   // @ts-ignore
-  const framework = context.params["toggle-name"][1] || "html"
+  const framework = context.params["toggle-name"][1] || "html";
+
+
+  const code = generateCode(
+    // @ts-ignore
+    toggle || { svg: "", name: context.params["toggle-name"][0] },
+    framework as any
+  );
 
   return {
     props: {
-      code: generateCode(toggle, framework as any),
+      code,
       toggle: toggleMeta,
     },
-  }
-}
+  };
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const results = togglesMeta.reduce((prev: any[], curr) => {
@@ -285,15 +248,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
           "toggle-name": [curr.svg, "html"],
         },
       },
-    ]
-    prev.push(...value)
-    return prev
-  }, [])
+    ];
+    prev.push(...value);
+    return prev;
+  }, []);
 
   return {
     paths: results,
     fallback: false, // See the "fallback" section below
-  }
-}
+  };
+};
 
-export default Toggles
+export default Toggles;

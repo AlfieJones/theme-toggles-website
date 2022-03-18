@@ -3,7 +3,7 @@
     "airbnb",
     "airbnb-typescript",
     "prettier",
-    "next", "next/core-web-vitals"],
+    "plugin:@next/next/recommended"],
   "plugins": ["prettier", "react-hooks"],
   "settings": {
     "import/resolver": {
@@ -25,6 +25,8 @@
     "import/prefer-default-export": "off",
     "@typescript-eslint/default-param-last": "off",
     "no-plusplus": "off",
+    "no-restricted-exports": "off",
+    "react/no-danger": "off",
     "react/function-component-definition": [
       2,
       {
