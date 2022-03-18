@@ -18,6 +18,12 @@ export const toggles = [
     classesGrid: "dark:bg-[#cfbaff] bg-[#f1ebff]",
   },
   {
+    name: "Within",
+    svg: "within",
+    description: "The sun collapses and a moon appears within",
+    classesGrid: "dark:bg-[#ffcfcf] bg-[#ffe3e3]",
+  },
+  {
     name: "Lightbulb",
     svg: "lightbulb",
     description: "A simple but elegant lightbulb",
@@ -28,11 +34,5 @@ export const toggles = [
     svg: "dark-side",
     description: "Subtle and minimalistic",
     classesGrid: "dark:bg-[#008ECC] bg-[#8acbe7]",
-  },
-  {
-    name: "Within",
-    svg: "within",
-    description: "The sun collapses and a moon appears within",
-    classesGrid: "dark:bg-[#ffcfcf] bg-[#ffe3e3]",
   },
 ];
