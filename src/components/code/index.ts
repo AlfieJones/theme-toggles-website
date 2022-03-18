@@ -1,5 +1,3 @@
 export * from "./code";
 export * from "./code.props";
-export { default } from "./code"
-
-
+export { default } from "./code";

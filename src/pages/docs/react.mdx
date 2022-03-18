@@ -28,15 +28,11 @@ import { Classic } from "@theme-toggles/react"
 <Classic />
 ```
 ### Reversed
-All the toggles are reversible by using the Reversed component
+All the toggles are reversible via the reversed prop
 ```jsx
-// app.js or equivalent
-import "@theme-toggles/react/dist/css/ClassicReversed.css"
-```
-```jsx
-import { ClassicReversed } from "@theme-toggles/react"
+import { Classic } from "@theme-toggles/react"
 
-<ClassicReversed />
+<Classic reversed />
 ```
 
 export default ({ children }) => <Layout><SettingsLayout>{children}</SettingsLayout></Layout>
@@ -65,6 +61,12 @@ The component accepts all the button props as well as the following
   <dd>The duration of the animation in milliseconds</dd>
   <dd>
     <b>Default:</b> 750ms
+  </dd>
+
+    <dt><code className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">reversed</code>: boolean</dt>
+  <dd>Reverses the animation</dd>
+  <dd>
+    <b>Default:</b> false
   </dd>
 
   <dt><code className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">onToggle</code>: (toggled: boolean) => void</dt>

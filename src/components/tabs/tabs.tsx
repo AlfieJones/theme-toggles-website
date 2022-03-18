@@ -1,8 +1,8 @@
-import React, { FC } from "react"
-import clsx from "clsx"
-import Link from "next/link"
-import { useRouter } from "next/router"
-import { TabProps } from "./tabs.props"
+import React, { FC } from "react";
+import clsx from "clsx";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { TabProps } from "./tabs.props";
 
 const Tabs: FC<TabProps> = ({
   tabs,
@@ -11,7 +11,7 @@ const Tabs: FC<TabProps> = ({
   concatBase,
   ...rest
 }: TabProps) => {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <div
       className={clsx("pb-5 overflow-x-auto scrollbar", className)}
@@ -38,7 +38,7 @@ const Tabs: FC<TabProps> = ({
         ))}
       </nav>
     </div>
-  )
-}
+  );
+};
 
-export default Tabs
+export default Tabs;
