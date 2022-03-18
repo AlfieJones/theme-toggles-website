@@ -38,7 +38,6 @@ export async function getStaticProps() {
     svg: string;
     description: string;
     classesGrid: string;
-    classesToggle: string;
     code?: string;
   }[] = toggleMeta;
   toggles.forEach((t) => {
