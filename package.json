@@ -36,7 +36,7 @@
     "react-html-parser": "^2.0.2",
     "react-syntax-highlighter": "^15.4.3",
     "simple-functional-loader": "^1.2.1",
-    "theme-toggles": "^4.0.0"
+    "theme-toggles": "^4.0.1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.1.0",
