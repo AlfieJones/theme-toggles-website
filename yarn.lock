@@ -3455,10 +3455,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-theme-toggles@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/theme-toggles/-/theme-toggles-4.1.0.tgz#fc46bf52b05b3c3e9af59edc2ce6886ac05911d2"
-  integrity sha512-MEOdsTIlIRWgJ9o8L74voIF6fradGNf1OAv37zEv7qScUBmNanmuuBRoEnVrpGq4nyjKwsNxsAfZDrl4ar8laA==
+theme-toggles@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/theme-toggles/-/theme-toggles-4.2.0.tgz#9d1a47deda699a03779c0033bc3e458a10804885"
+  integrity sha512-slci9r0dmdX/j9KQm03ZLI+8UkRzDqSdhCmb00sf2iPJw2iB8hEZRzw8rTdSbbeIQ9ffcjdeiyP95hDy0qgo+g==
 
 to-regex-range@^5.0.1:
   version "5.0.1"
