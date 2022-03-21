@@ -71,9 +71,9 @@ const Home = () => (
         </div>
         <p className="mx-auto mt-5 text-xl text-gray-500 max-w-prose dark:text-gray-200">
           We use SVG&rsquo;s for each of our toggles, animating them with CSS.
-          Using SVG&rsquo;s instead of html elements like divSVG&rsquo;s enables
-          us to have minimal markup whilst maintaining a high quality and
-          scalable icon.
+          Using SVG&rsquo;s instead of html elements like div&rsquo;s enables us
+          to have minimal markup whilst maintaining a high quality and scalable
+          icon.
         </p>
       </div>
     </div>
