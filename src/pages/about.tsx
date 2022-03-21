@@ -111,7 +111,7 @@ const Home = () => (
           height="1em"
           viewBox="0 0 16 16"
           width="1em"
-          className="inline-block mr-0 text-pink-500 transform group-hover:scale-105"
+          className="inline-block mr-0 text-pink-500 transform group-hover:scale-110"
         >
           <path
             fill="currentColor"
