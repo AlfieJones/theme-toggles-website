@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer utilities {
 
     .scrollbar {
@@ -47,4 +46,9 @@
 * {
     transition-property: background-color, border-color, color, fill, stroke;
     transition-duration: 150ms;
+}
+
+
+.ignore-scrollbar {
+  margin-left: calc(100vw - 100%);
 }

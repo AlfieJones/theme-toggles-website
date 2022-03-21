@@ -37,7 +37,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   return (
     <div className="relative min-h-screen overflow-hidden transition-colors bg-white dark:bg-dark-900">
       <div className="relative pt-6 pb-16 xs:pb-24">
-        <Popover>
+        <Popover className="ignore-scrollbar">
           {({ open }) => (
             <>
               <div className="px-6 mx-auto max-w-7xl">
@@ -171,7 +171,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
           {children}
         </main>
       </div>
-      <footer aria-labelledby="footer-heading">
+      <footer aria-labelledby="footer-heading" className="ignore-scrollbar">
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>

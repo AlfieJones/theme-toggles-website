@@ -30,6 +30,12 @@ export const toggles = [
     classesGrid: "dark:bg-[#008ECC] bg-[#8acbe7]",
   },
   {
+    name: "Horizon",
+    svg: "horizon",
+    description: "The sun rises and sets over the horizon",
+    classesGrid: "dark:bg-[#bcdb9c] bg-[#d0e3bc]",
+  },
+  {
     name: "Eclipse",
     svg: "eclipse",
     description: "The moon moves across the sun mimicking an eclipse",
@@ -42,10 +48,10 @@ export const toggles = [
     classesGrid: "dark:bg-[#81D8D0] bg-[#c5e3e0]",
   },
   {
-    name: "Horizon",
-    svg: "horizon",
-    description: "The sun rises and sets over the horizon",
-    classesGrid: "dark:bg-[#bcdb9c] bg-[#d0e3bc]",
+    name: "Dark Inner",
+    svg: "dark-inner",
+    description: "A more complicated dark side animation",
+    classesGrid: "dark:bg-[#bcabe0] bg-[#c9bce3]",
   },
   {
     name: "Simple",
