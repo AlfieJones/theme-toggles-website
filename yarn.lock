@@ -243,10 +243,10 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.1.tgz#782fa5da44c4f38ae9fd38e9184b54e451936118"
   integrity sha512-BUyKJGdDWqvWC5GEhyOiUrGNi9iJUr4CU0O2WxJL6QJhHeeA/NVBalH+FeK0r/x/W0rPymXt5s78TDS7d6lCwg==
 
-"@theme-toggles/react@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@theme-toggles/react/-/react-3.4.0.tgz#6d4ad157c12accf4ede733736b3b3f210b0eb8ea"
-  integrity sha512-TfRGxT77Any8ZWPsWKEWjCr42FtTVlXL8WsjR4SZJEJG5fzUo+w8dDYD/v+jytR/yMg76oVBJlrb7J6ua0ei2Q==
+"@theme-toggles/react@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@theme-toggles/react/-/react-3.6.0.tgz#96089da870e800ac4bac572238d1f2cf992ac7f0"
+  integrity sha512-ypcmOD0HCGVnCqm3hPScFO7qT9SHys1aZQ21mf+KGYzDwtMJR2vQL3G/bxGCS+wuxu8856RqpIQqChbknBp9hw==
 
 "@types/acorn@^4.0.0":
   version "4.0.6"
@@ -3455,10 +3455,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-theme-toggles@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/theme-toggles/-/theme-toggles-4.6.0.tgz#bab7ced03ad22a4bf4ac44d139b7a06d64e0dc73"
-  integrity sha512-ezMZIIVqx+ZSpz4VIaVbEo6rUAqzb0Rs22PM4QW8/0guGGZqwxKgoX7fNTpgc7WvBY9kbI3teJMWoXhv3UAGjg==
+theme-toggles@^4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/theme-toggles/-/theme-toggles-4.7.0.tgz#0dc8762fcb4d75648f4ea57b192ab288dec23ba7"
+  integrity sha512-nDs3GNh2eVZqYuhGvWymXjN3VqTBtjN19KHXl6VHFhQFYpFcquVeK9RsmtMXgFO+9hCwwzv/yE3XB+FdX82NiA==
 
 to-regex-range@^5.0.1:
   version "5.0.1"
