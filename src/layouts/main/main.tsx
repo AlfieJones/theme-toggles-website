@@ -10,6 +10,7 @@ import { LayoutProps } from "./main.props";
 
 const navigation = [
   { name: "Toggles", href: "/", matchAfter: false },
+  { name: "About", href: "/about", matchAfter: false },
   { name: "Documentation", href: "/docs", matchAfter: true },
 ];
 

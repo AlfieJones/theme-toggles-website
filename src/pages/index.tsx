@@ -21,12 +21,12 @@ const Home = ({ toggles }: any) => (
         great with Tailwind CSS.
       </p>
     </div>
-    <section className="mt-24">
+    <div className="mt-24">
       <h2 className="mb-12 text-4xl font-semibold text-center text-gray-700 xs:text-left dark:text-gray-50 ">
         Our toggle collection
       </h2>
       <ToggleGrid toggles={toggles} />
-    </section>
+    </div>
   </>
 );
 
