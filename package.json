@@ -18,7 +18,7 @@
     "@mdx-js/react": "^2.0.0",
     "@next/bundle-analyzer": "^12.0.10",
     "@next/mdx": "^12.1.0",
-    "@theme-toggles/react": "^3.6.5",
+    "@theme-toggles/react": "^3.6.6",
     "clsx": "^1.1.1",
     "file-loader": "^6.2.0",
     "html-entities": "^2.3.2",
@@ -36,7 +36,7 @@
     "react-html-parser": "^2.0.2",
     "react-syntax-highlighter": "^15.4.3",
     "simple-functional-loader": "^1.2.1",
-    "theme-toggles": "^4.7.1"
+    "theme-toggles": "^4.7.2"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.1.0",
