@@ -61,8 +61,9 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
                 "theme-toggle text-gray-800 dark:text-gray-100",
                 reversed && "theme-toggle--reversed"
               )}
+              title={toggle.name}
               dangerouslySetInnerHTML={{
-                __html: `<input type="checkbox" /><span class="sr-only">Toggle theme</span>${code.display}`,
+                __html: `<input type="checkbox" /><span class="sr-only">${toggle.name} theme toggle</span>${code.display}`,
               }}
             />
           </div>

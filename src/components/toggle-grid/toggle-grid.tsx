@@ -3,7 +3,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import React, { FC } from "react";
 
-const ToggleGrid: FC<{ toggles: any }> = ({ toggles }: any) => (
+const ToggleGrid: FC<{ toggles: any }> = ({ toggles }) => (
   <ul className="grid grid-cols-1 justify-items-center xs:justify-items-stretch gap-x-8 gap-y-8 xs:grid-cols-2 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
     {toggles.map((item: any) => (
       <li
@@ -15,8 +15,9 @@ const ToggleGrid: FC<{ toggles: any }> = ({ toggles }: any) => (
         >
           <label
             className="text-gray-900 theme-toggle"
+            title={`${item.name}`}
             dangerouslySetInnerHTML={{
-              __html: `<input type="checkbox" /><span class="sr-only">Toggle theme</span>${item.code}`,
+              __html: `<input type="checkbox" /><span class="sr-only">${item.name} theme toggle</span>${item.code}`,
             }}
           />
         </div>

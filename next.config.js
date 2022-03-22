@@ -25,7 +25,9 @@ module.exports = withPlugins([withBundleAnalyzer, withMDX], {
         options.defaultLoaders.babel,
         createLoader(function (code) {
           return code.replace(/"(.*?)(?<!\\)"/gs, (_, svg) =>
-            svg
+          svg
+              .replace(/(aria-hidden=\\"[^]+?\\")/, "")
+              .replace(/(?<=xmlns=\\"[^]+?\\")/, 'aria-hidden="true"')
               .replace(/>(\s|\\n)+</g, "><")
               .replace(/\\n$/, "")
               .replace(/\\"/g, '"')
