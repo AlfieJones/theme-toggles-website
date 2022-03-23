@@ -22,7 +22,10 @@ const actions = [
 
 const Documentation = () => (
   <>
-    <NextSeo title="Docs" description="Documentation for theme toggles" />
+    <NextSeo
+      title="Docs"
+      description="Documentation for the theme toggles library. Our dark mode switchers currently come in two formats, HTML with css or React"
+    />
     <div className="justify-center divide-white dark:divide-dark-900 xs:divide-y-0 xs:grid xs:grid-cols-2 md:grid-cols-3 xs:gap-5">
       {actions.map((action) => (
         <div
