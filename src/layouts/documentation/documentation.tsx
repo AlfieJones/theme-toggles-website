@@ -7,11 +7,13 @@ const tabs: Tab[] = [
   { title: "HTML", key: 0, pathname: "/html", default: true },
   { title: "React", key: 1, pathname: "/react", default: false },
 ];
-const SettingsLayout: FC<DocumentationProps> = ({
+const DocumentationLayout: FC<DocumentationProps> = ({
+  title,
+  description,
   children,
 }: DocumentationProps) => (
   <>
-    <NextSeo title="Docs" description="Documentation for theme toggles" />
+    <NextSeo title={title} description={description} />
     <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
       Framework
     </h3>
@@ -20,4 +22,4 @@ const SettingsLayout: FC<DocumentationProps> = ({
   </>
 );
 
-export default SettingsLayout;
+export default DocumentationLayout;

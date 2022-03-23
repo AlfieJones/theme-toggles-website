@@ -1,4 +1,4 @@
-import SettingsLayout from "../../layouts/documentation"
+import DocumentationLayout from "../../layouts/documentation"
 import Link from "next/link"
 import Layout from "../../layouts/main"
 import { H1 } from "../../components/mdx"
@@ -34,8 +34,6 @@ import { Classic } from "@theme-toggles/react"
 
 <Classic reversed />
 ```
-
-export default ({ children }) => <Layout><SettingsLayout>{children}</SettingsLayout></Layout>
 
 ### Handling state
 The component can handle it's own state internally but also provides a way for you to have complete control.
@@ -95,3 +93,4 @@ It's also recommend to add a <span className="dark:bg-dark-50 bg-zinc-200 p-1 ro
 
 You can also provided a <span className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">tabIndex</span> attribute
 
+export default ({ children }) => <Layout><DocumentationLayout title="React" description="Dark mode toggles built for React, with SVG's driven by CSS transitions. Designed to be performant whilst looking great. Choose from our collection of theme toggles to find the right one for you">{children}</DocumentationLayout></Layout>
