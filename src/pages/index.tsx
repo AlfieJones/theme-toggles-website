@@ -6,7 +6,7 @@ import { generatePreview, toggles as toggleList } from "../toggles/utilities";
 
 const Home = ({ toggles }: any) => (
   <>
-    <NextSeo description="A Collection of dark/light theme toggles" />
+    <NextSeo description="A Collection of dark and light theme toggles. Our toggles are built with SVG's driven by CSS transitions. The library also comes with official React support. The dark mode toggles work great with utility CSS Frameworks such as Tailwindcss" />
     <div className="pt-12 text-center">
       <h1 className="text-4xl font-extrabold tracking-tight text-gray-700 2xs:text-5xl dark:text-white md:text-6xl lg:text-7xl">
         <span className="bg-gradient-to-r text-transparent bg-clip-text from-blue-600 to-[#3eadcf] block pb-1 sm:pb-2 md:pb-3">
