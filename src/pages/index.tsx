@@ -18,7 +18,7 @@ const Home = ({ toggles }: any) => (
         Theme toggles is a collection of awesome, easy to use, animated toggles;
         designed for switching between light and dark modes. It&apos;s a modular
         library which aims to provide an ample customization where needed. Works
-        great with Tailwind CSS.
+        great utility CSS frameworks such as Tailwindcss.
       </p>
     </div>
     <div className="mt-24">
