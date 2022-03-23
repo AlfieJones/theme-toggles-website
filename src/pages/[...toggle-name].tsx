@@ -51,7 +51,7 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
     <>
       <NextSeo
         title={toggle.name}
-        description="See the toggle in action and get the code"
+        description={`${toggle.name} toggle. Get the code for dark mode switcher and implement it into your site`}
       />
       <div className="flex flex-col items-center mt-12 lg:items-start lg:mt-24 lg:flex-row">
         <div className="h-full">

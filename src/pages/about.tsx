@@ -28,7 +28,10 @@ const features = [
 
 const Home = () => (
   <>
-    <NextSeo description="About the theme toggles project" title="About" />
+    <NextSeo
+      description="About the theme toggles project. Theme toggles is a library of dark mode switchers which works with standard HTML or React"
+      title="About"
+    />
     <div className="relative py-6 sm:py-8 lg:py-12">
       <div className="max-w-md px-4 mx-auto text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
         <h1 className="text-base font-semibold tracking-wider text-blue-600 uppercase dark:text-blue-500">
