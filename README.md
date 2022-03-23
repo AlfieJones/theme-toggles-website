@@ -1,8 +1,4 @@
 <div align="center">
-<br />
-
-<!-- PROJECT LOGO -->
-<br />
 <h1 >Toggles.dev</h1>
   <p>This is the website for Theme Toggles</p>  
 </p>
