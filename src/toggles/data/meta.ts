@@ -54,6 +54,12 @@ export const toggles = [
     classesGrid: "dark:bg-[#bcabe0] bg-[#c9bce3]",
   },
   {
+    name: "Half Sun",
+    svg: "half-sun",
+    description: "Similar to dark side but with sun rays",
+    classesGrid: "dark:bg-[#db9cb6] bg-[#d9bdc8]",
+  },
+  {
     name: "Simple",
     svg: "simple",
     description: "A very basic moon and sun transition",
