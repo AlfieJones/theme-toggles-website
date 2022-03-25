@@ -14,7 +14,7 @@ const ToggleGrid: FC<{ toggles: any }> = ({ toggles }) => (
           className={clsx("rounded-t-md px-4 xs:px-8 py-5", item.classesGrid)}
         >
           <label
-            className="text-gray-900 theme-toggle"
+            className="text-gray-900 theme-toggle theme-toggle--force-motion"
             title={`${item.name}`}
             dangerouslySetInnerHTML={{
               __html: `<input type="checkbox" /><span class="sr-only">${item.name} theme toggle</span>${item.code}`,

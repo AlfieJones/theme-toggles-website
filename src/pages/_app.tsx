@@ -1,5 +1,5 @@
-import "../styles/globals.css";
 import "theme-toggles/css/bundle.min.css";
+import "../styles/globals.css";
 import "../styles/prism-one.css";
 import React, { FC, Fragment } from "react";
 import { ThemeProvider } from "next-use-theme";

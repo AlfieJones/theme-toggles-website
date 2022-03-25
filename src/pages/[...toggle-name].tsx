@@ -58,7 +58,7 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
           <div className="relative p-6 w-72 h-72">
             <label
               className={clsx(
-                "theme-toggle text-gray-800 dark:text-gray-100",
+                "theme-toggle text-gray-800 dark:text-gray-100 theme-toggle--force-motion",
                 reversed && "theme-toggle--reversed"
               )}
               title={toggle.name}
