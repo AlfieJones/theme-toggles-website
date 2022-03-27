@@ -35,7 +35,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden transition-colors bg-white dark:bg-dark-900">
+    <div className="relative min-h-screen overflow-hidden bg-white dark:bg-dark-900">
       <div className="relative pt-6 pb-16 xs:pb-24">
         <Popover className="ignore-scrollbar">
           {({ open }) => (

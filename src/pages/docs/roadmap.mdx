@@ -1,0 +1,61 @@
+import DocumentationLayout from "../../layouts/documentation"
+import Link from "next/link"
+import Layout from "../../layouts/main"
+import { NextSeo } from "next-seo"
+
+
+
+# Roadmap
+Our roadmap, see whats being worked on
+
+## HTML 
+Version 5<br/>
+These updates can and most likely will effect the other frameworks since they're built from this.
+<ul>
+    <li>
+        <span className="text-blue-500 font-bold">-</span> Fix symmetry for some icons so there isn't a shift when the reversed class is added
+
+    </li>
+    <li>
+        <span className="text-blue-500 font-bold">-</span> Merge all css variables into a single variable
+    </li>
+    <li>
+        <span className="text-blue-500 font-bold">-</span> Ensure css selectors dont use class names or id's (will allow for prefixing etc)
+    </li>
+</ul>
+
+## React
+Version 4
+<ul>
+    <li>
+        <span className="text-blue-500 font-bold">-</span> Babel plugin for SVGR to enable id prefixing
+
+    </li>
+    <li>
+        <span className="text-blue-500 font-bold">-</span> Prop to change id prefixes
+    </li>
+    <li>
+        <span className="text-blue-500 font-bold">-</span> Prop to change id
+    </li>
+    <li>
+        <span className="text-blue-500 font-bold">-</span> Prop to force motion despite reduced motion
+    </li>
+    <li>
+        <span className="text-blue-500 font-bold">-</span> Re-write build scripts removing the commands from package.json
+    </li>
+</ul>
+
+## React native
+Version 1
+
+Using the React build config, adapt for React Native
+This will come after version 4 of React
+
+
+> This list can and probably will change.
+> There is no specific date for when these updates will be released
+
+
+
+
+export default ({ children }) => <Layout><div className="text-gray-900 dark:text-gray-100 sm:ml-5 "><NextSeo description="Our roadmap, see whats being worked on" title="Roadmap"/>{children}</div></Layout>

@@ -71,6 +71,23 @@ const Documentation = () => (
         </div>
       ))}
     </div>
+    <div className="px-3 py-3 mx-auto mt-12 -mb-32 bg-blue-600 rounded lg:-mb-44 sm:-mb-36 sm:mt-24 max-w-7xl sm:px-6 lg:px-8">
+      <div className="pr-16 sm:text-center sm:px-16">
+        <p className="font-medium text-white">
+          <span className="md:hidden">We announced a new product!</span>
+          <span className="hidden md:inline">
+            Want to see whats coming next?
+          </span>
+          <span className="block sm:ml-2 sm:inline-block">
+            <Link href="docs/roadmap">
+              <a className="font-bold text-white underline">
+                See our roadmap <span aria-hidden="true">&rarr;</span>
+              </a>
+            </Link>
+          </span>
+        </p>
+      </div>
+    </div>
   </>
 );
 

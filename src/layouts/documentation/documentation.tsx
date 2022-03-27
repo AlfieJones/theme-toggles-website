@@ -18,7 +18,9 @@ const DocumentationLayout: FC<DocumentationProps> = ({
       Framework
     </h3>
     <Tabs tabs={tabs} base="/docs" concatBase />
-    <div className="-mt-10 text-gray-900 dark:text-gray-100">{children}</div>
+    <div className="-mt-10 text-gray-900 dark:text-gray-100 sm:ml-5">
+      {children}
+    </div>
   </>
 );
 
