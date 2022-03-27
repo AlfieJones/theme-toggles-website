@@ -71,7 +71,7 @@ const Documentation = () => (
         </div>
       ))}
     </div>
-    <div className="px-3 py-3 mx-auto mt-12 -mb-32 bg-blue-600 rounded lg:-mb-44 sm:-mb-36 sm:mt-24 max-w-7xl sm:px-6 lg:px-8">
+    <div className="px-3 py-3 mx-auto mt-12 -mb-32 bg-blue-600 rounded dark:bg-blue-800 lg:-mb-44 sm:-mb-36 sm:mt-24 max-w-7xl sm:px-6 lg:px-8">
       <div className="pr-16 sm:text-center sm:px-16">
         <p className="font-medium text-white">
           <span className="md:hidden">We announced a new product!</span>
