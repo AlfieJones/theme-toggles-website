@@ -77,10 +77,23 @@ The component accepts all the button props as well as the following
   <dd>
     <b>Default:</b> undefined
   </dd>
+
   <dt><code className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">toggle</code>: Dispatch\<SetStateAction\<boolean\>\></dt>
   <dd>Used to provide your own state</dd>
   <dd>
     <b>Default:</b> undefined
+  </dd>
+
+  <dt><code className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">forceMotion</code>: boolean</dt>
+  <dd>Used to force motion despite the client having reduced motion applied. For accessability reasons, this library respects reduced motion by default</dd>
+  <dd>
+    <b>Default:</b> false
+  </dd>
+
+  <dt><code className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">idPrefix</code>: string</dt>
+  <dd>Used to prefix the id's used in the SVGs. Useful for when multiple versions of the same toggle are being used on a page</dd>
+  <dd>
+    <b>Default:</b> ""
   </dd>
 </dl>
 
@@ -91,5 +104,9 @@ As the toggle is a button, we use the <span className="dark:bg-dark-50 bg-zinc-2
 It's also recommend to add a <span className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">title</span> for accessability. Since these components are built with accessability in mind, this defaults to "Toggle theme".
 
 You can also provided a <span className="dark:bg-dark-50 bg-zinc-200 p-1 rounded">tabIndex</span> attribute
+
+### Reduced Motion
+
+This library respects reduced motion and removes the animations when a client has this enabled.
 
 export default ({ children }) => <Layout><DocumentationLayout title="React" description="Dark mode toggles built for React, with SVG's driven by CSS transitions. Designed to be performant whilst looking great. Choose from our collection of theme toggles to find the right one for you">{children}</DocumentationLayout></Layout>
