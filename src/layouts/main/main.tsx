@@ -5,7 +5,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import { useTheme } from "next-use-theme";
-import { InnerMoon } from "@theme-toggles/react";
+import { Expand } from "@theme-toggles/react";
 import { LayoutProps } from "./main.props";
 
 const navigation = [
@@ -49,10 +49,11 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                     <div className="flex items-center justify-between w-full h-8 xs:w-auto">
                       <div className="flex items-center">
                         {typeof window !== "undefined" && (
-                          <InnerMoon
+                          <Expand
                             className="text-3xl text-zinc-700 dark:text-zinc-300"
                             toggled={theme === "dark"}
                             onToggle={toggle}
+                            idPrefix="main"
                           />
                         )}
                       </div>
