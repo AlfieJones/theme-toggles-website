@@ -1,4 +1,3 @@
-/* eslint-disable  */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import clsx from "clsx";
 import React, { Fragment, useContext, useEffect, useState } from "react";
@@ -69,84 +68,93 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
           </div>
         </div>
         <div className="w-full overflow-hidden">
-        <div className="p-2 mx-auto rounded-md bg-zinc-100 dark:bg-dark-800">
-          <div className="flex flex-wrap-reverse mx-2 overflow-auto border-b dark:border-dark-50 border-zinc-300 scrollbar scrollbar-thin dark:scrollbar-thumb-zinc-500 scrollbar-thumb-zinc-400 dark:scrollbar-track-dark-800 scrollbar-track-zinc-200 scrollbar-thumb-rounded scrollbar-track-rounded-md">
-            <div className="flex pr-4 space-x-2 xs:pr-16" aria-label="Wrapper">
-              {code.variants.length > 1 &&
-                code.variants.map((variant: any) => (
-                  <button
-                    key={variant.name}
-                    type="button"
-                    onClick={() =>
-                      setSelected(
-                        code.variants.find((i: any) => i.name === variant.name)
-                      )
-                    }
-                    className={clsx(
-                      selected?.name === variant.name
-                        ? "dark:border-blue-500  dark:text-blue-500 border-blue-600 text-blue-600"
-                        : "border-transparent text-zinc-500 dark:hover:text-zinc-200 hover:text-zinc-600 hover:border-zinc-300",
-                      "whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm"
-                    )}
-                  >
-                    {variant.name}
-                  </button>
-                ))}
-            </div>
-            <div className="flex ml-auto">
-              <Switch.Group as="div" className="flex items-center">
-                <Switch.Label
-                  as="span"
-                  className="mr-3 text-sm pointer-events-none dark:text-zinc-200 text-zinc-700"
-                >
-                  Reverse
-                </Switch.Label>
-                <Switch
-                  checked={reversed}
-                  onChange={setReversed}
-                  className="relative inline-flex items-center justify-center flex-shrink-0 w-10 h-5 rounded-full cursor-pointer group focus:outline-none focus:ring-2 ring-offset-zinc-50 dark:ring-offset-dark-800 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                  <span className="sr-only">Use reversed</span>
-                  <span
-                    aria-hidden="true"
-                    className="absolute w-full h-full rounded-md pointer-events-none dark:bg-dark-800 bg-zinc-100"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className={clsx(
-                      reversed ? "bg-blue-600" : "dark:bg-dark-50 bg-zinc-200",
-                      "pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200"
-                    )}
-                  />
-                  <span
-                    aria-hidden="true"
-                    className={clsx(
-                      reversed ? "translate-x-5" : "translate-x-0",
-                      "pointer-events-none absolute left-0 inline-block h-5 w-5 border border-zinc-200 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200"
-                    )}
-                  />
-                </Switch>
-              </Switch.Group>
-              <CopyToClipboard
-                text={selected?.code.plain || ""}
-                onCopy={() => {
-                  setShow(true);
-                  setTimeout(() => setShow(false), 4000);
-                }}
+          <div className="p-2 mx-auto rounded-md bg-zinc-100 dark:bg-dark-800">
+            <div className="flex flex-wrap-reverse mx-2 overflow-auto border-b dark:border-dark-50 border-zinc-300 scrollbar scrollbar-thin dark:scrollbar-thumb-zinc-500 scrollbar-thumb-zinc-400 dark:scrollbar-track-dark-800 scrollbar-track-zinc-200 scrollbar-thumb-rounded scrollbar-track-rounded-md">
+              <div
+                className="flex pr-4 space-x-2 xs:pr-16"
+                aria-label="Wrapper"
               >
-                <button type="button" className="ml-5 mr-2">
-                  <ClipboardCopyIcon
-                    className="w-6 h-6 my-2 dark:text-white text-zinc-500"
-                    aria-hidden="true"
-                  />
-                </button>
-              </CopyToClipboard>
+                {code.variants.length > 1 &&
+                  code.variants.map((variant: any) => (
+                    <button
+                      key={variant.name}
+                      type="button"
+                      onClick={() =>
+                        setSelected(
+                          code.variants.find(
+                            (i: any) => i.name === variant.name
+                          )
+                        )
+                      }
+                      className={clsx(
+                        selected?.name === variant.name
+                          ? "dark:border-blue-500  dark:text-blue-500 border-blue-600 text-blue-600"
+                          : "border-transparent text-zinc-500 dark:hover:text-zinc-200 hover:text-zinc-600 hover:border-zinc-300",
+                        "whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm"
+                      )}
+                    >
+                      {variant.name}
+                    </button>
+                  ))}
+              </div>
+              <div className="flex ml-auto">
+                <Switch.Group as="div" className="flex items-center">
+                  <Switch.Label
+                    as="span"
+                    className="mr-3 text-sm pointer-events-none dark:text-zinc-200 text-zinc-700"
+                  >
+                    Reverse
+                  </Switch.Label>
+                  <Switch
+                    checked={reversed}
+                    onChange={setReversed}
+                    className="relative inline-flex items-center justify-center flex-shrink-0 w-10 h-5 rounded-full cursor-pointer group focus:outline-none focus:ring-2 ring-offset-zinc-50 dark:ring-offset-dark-800 focus:ring-offset-2 focus:ring-blue-500"
+                  >
+                    <span className="sr-only">Use reversed</span>
+                    <span
+                      aria-hidden="true"
+                      className="absolute w-full h-full rounded-md pointer-events-none dark:bg-dark-800 bg-zinc-100"
+                    />
+                    <span
+                      aria-hidden="true"
+                      className={clsx(
+                        reversed
+                          ? "bg-blue-600"
+                          : "dark:bg-dark-50 bg-zinc-200",
+                        "pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200"
+                      )}
+                    />
+                    <span
+                      aria-hidden="true"
+                      className={clsx(
+                        reversed ? "translate-x-5" : "translate-x-0",
+                        "pointer-events-none absolute left-0 inline-block h-5 w-5 border border-zinc-200 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200"
+                      )}
+                    />
+                  </Switch>
+                </Switch.Group>
+                <CopyToClipboard
+                  text={selected?.code.plain || ""}
+                  onCopy={() => {
+                    setShow(true);
+                    setTimeout(() => setShow(false), 4000);
+                  }}
+                >
+                  <button type="button" className="ml-5 mr-2">
+                    <ClipboardCopyIcon
+                      className="w-6 h-6 my-2 dark:text-white text-zinc-500"
+                      aria-hidden="true"
+                    />
+                  </button>
+                </CopyToClipboard>
+              </div>
             </div>
+            <Code className={`language-${selected?.type}`}>
+              {reversed
+                ? selected?.reversed.highlighted
+                : selected?.code.highlighted}
+            </Code>
           </div>
-          <Code className={`language-${selected?.type}`}>
-            {reversed ? selected?.reversed.highlighted : selected?.code.highlighted}
-          </Code>
-        </div>
         </div>
       </div>
       <div
@@ -181,6 +189,7 @@ const Toggles = ({ code, toggle }: ToggleProps) => {
                   </div>
                   <div className="flex flex-shrink-0 ml-4">
                     <button
+                      type="button"
                       className="inline-flex rounded-md text-zinc-400 dark:text-zinc-200 hover:text-zinc-500 focus:outline-none dark:ring-offset-dark-400 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                       onClick={() => {
                         setShow(false);
@@ -214,7 +223,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   // @ts-ignore
   const framework = context.params["toggle-name"][1] || "html";
-
 
   const code = generateCode(
     // @ts-ignore
