@@ -17,7 +17,7 @@ const Home = ({ toggles }: any) => (
       <p className="max-w-md mx-auto mt-5 text-base text-gray-500 dark:text-gray-200 sm:text-lg md:mt-7 md:text-xl md:max-w-3xl">
         Theme toggles is a collection of awesome, easy to use, animated toggles;
         designed for switching between light and dark modes. It&apos;s a modular
-        library which aims to provide an ample customization where needed. Works
+        library which aims to provide ample customization where needed. Works
         great utility CSS frameworks such as Tailwindcss.
       </p>
     </div>
