@@ -1,7 +1,7 @@
 <div align="center">
 <h1 >Toggles.dev</h1>
   <p>This is the website for Theme Toggles</p>  
-</p>
+</h1>
 </div>
 
 * [Website](https://toggles.dev)
