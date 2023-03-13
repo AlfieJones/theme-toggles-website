@@ -1,8 +1,5 @@
 import { NextSeo } from "next-seo";
-import {
-  CloudDownloadIcon,
-  PencilAltIcon,
-} from "@heroicons/react/outline";
+import { CloudDownloadIcon, PencilAltIcon } from "@heroicons/react/outline";
 import Layout from "../layouts/main";
 
 const features = [
