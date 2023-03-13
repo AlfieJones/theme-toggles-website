@@ -2,7 +2,6 @@ import { NextSeo } from "next-seo";
 import {
   CloudDownloadIcon,
   PencilAltIcon,
-  BadgeCheckIcon,
 } from "@heroicons/react/outline";
 import Layout from "../layouts/main";
 
