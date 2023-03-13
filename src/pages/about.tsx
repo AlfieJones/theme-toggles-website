@@ -13,12 +13,6 @@ const features = [
     icon: CloudDownloadIcon,
   },
   {
-    name: "Accessible",
-    description:
-      "Our goal is to ensure the toggles remain as accessible as possible. This includes proper screen reader support.",
-    icon: BadgeCheckIcon,
-  },
-  {
     name: "Customizable",
     description:
       "We allow for customization of basic features ensuring you get the toggle you want without being inundated with options",
@@ -42,12 +36,10 @@ const Home = () => (
         </p>
         <p className="mx-auto mt-5 text-xl text-gray-500 max-w-prose dark:text-gray-200">
           Our project provides you with a quick and effortless way to implement
-          well designed toggles. With more websites supporting both light and
-          dark themes, it&apos;s important to ensure sites also have a clean and
-          accessible toggle
+          well designed toggles.
         </p>
         <div className="mt-12">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
             {features.map((feature) => (
               <div key={feature.name} className="pt-6">
                 <div className="flow-root px-6 pb-8 rounded-lg bg-gray-50 dark:bg-dark-800">
