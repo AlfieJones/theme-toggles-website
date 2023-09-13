@@ -27,7 +27,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const router = useRouter();
   const { toggle, theme } = useTheme();
 
-  const matches = (nav: (typeof navigation[0])) => {
+  const matches = (nav: (typeof navigation)[0]) => {
     if (nav.matchAfter) {
       return router.asPath.startsWith(nav.href);
     }
