@@ -36,6 +36,21 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-white dark:bg-dark-900">
+      <div className="flex items-center justify-center bg-blue-500 px-6 py-2.5 sm:px-3.5">
+        <p className="text-sm leading-6 text-white">
+          <a href="https://pixeleye.io/home">
+            <strong className="font-semibold">Pixeleye</strong>
+            <svg
+              viewBox="0 0 2 2"
+              className="mx-2 inline h-0.5 w-0.5 fill-current"
+              aria-hidden="true"
+            >
+              <circle cx={1} cy={1} r={1} />
+            </svg>
+            Checkout my latest project, Open Source visual testing
+          </a>
+        </p>
+      </div>
       <div className="relative pt-6 pb-16 xs:pb-24">
         <Popover className="ignore-scrollbar">
           {({ open }) => (
